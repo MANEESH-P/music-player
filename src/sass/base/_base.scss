@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+  background:#f6f7fb;
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+input,
+textarea,
+button,
+select,
+a,
+label {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input:focus{
+  outline:none;
+}

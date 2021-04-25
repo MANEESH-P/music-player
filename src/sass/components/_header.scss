@@ -1,0 +1,15 @@
+.music-player__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #2880b9;
+  height: 5rem;
+  width: 100%;
+  border-radius: 10px 10px 45px 0px;
+  color: white;
+  display: flex;
+  align-items: center;
+  h3 {
+    padding: 0px 25px;
+  }
+}

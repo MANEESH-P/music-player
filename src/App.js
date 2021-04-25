@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import './App.scss';
+import './sass/main.scss';
+import Home from "./home";
 
 function App() {
+
+  useEffect(() => {
+    let popup = document.getElementById('popup');
+    popup.addEventListener('click', function () {
+      let songContainer = document.getElementById('songs-container');
+      songContainer.classList.toggle('overlay')
+      let footer = document.getElementById('footer');
+      footer.classList.toggle('expanded')
+    })
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Home />
     </div>
   );
 }

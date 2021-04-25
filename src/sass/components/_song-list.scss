@@ -1,0 +1,23 @@
+.music-player__song-list {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  height: calc(100% - 5rem - 40px);
+  margin-top: 5rem;
+  overflow: scroll;
+  padding: 20px 0px;
+  &.overlay{
+    .music-player__song{
+      transform: translate3d(0, 2rem, -2rem) scale(0.9);
+  opacity: 0.5;
+      
+    }
+    .song__cover-image{
+      transform: translateX(-2rem);
+      opacity: 0;
+    }
+  }
+  &--container {
+    padding-bottom: 3rem;
+  }
+}

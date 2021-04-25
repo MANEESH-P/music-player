@@ -1,0 +1,47 @@
+.music-player {
+  height: 40rem;
+  width: 20rem;
+  background: white;
+  display: flex;
+  position: relative;
+  border-radius: 10px 10px 0px 0px;
+  padding: 0px 0px 10px 0px;
+  overflow: hidden;
+  .play-button {
+    position: absolute;
+    top: 3rem;
+    right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    box-shadow: 0 0.5rem 1rem rgba(88, 61 ,145, 0.3);
+    height: 50px;
+    width: 50px;
+    z-index: 2;
+    border-radius: 50%;
+    cursor: pointer;
+    i {
+      color: rgba(40, 128, 185, 0.6);
+      font-size: 1.2rem;
+      padding-left: 5px;
+      transition: 0.15s ease-in;
+    }
+    &:hover {
+      i {
+        color: rgb(40, 128, 185);
+      }
+    }
+  }
+  p {
+    font-size: 12px;
+    color: #9a9a9a;
+  }
+}
+
+@media only screen and (max-width: 467px) {
+  .music-player{
+    width:100vw;
+    height: 100vh;
+  }
+}

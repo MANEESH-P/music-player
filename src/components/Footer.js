@@ -39,7 +39,7 @@ const Footer = () => {
       <div class="footer--topbar">
         <div class="footer--details">
           <span>
-            <h3>{songs[songId].name.substring(0, 12) + '...'}</h3>
+            <h3>{songs[songId]?.name.substring(0, 12) + '...'}</h3>
           </span>
           <span>
             <p>{songDetails.artist ? songDetails.artist : 'Unknown Artist'}</p>

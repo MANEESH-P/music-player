@@ -1,5 +1,6 @@
 import { useReducer, useEffect } from 'react';
-const jsmediatags = require('jsmediatags');
+import * as musicMetadata from 'music-metadata-browser';
+// const jsmediatags = require('jsmediatags');
 
 const constants = {
   GET_SONG_DETAILS_SUCCESS: 'GET_SONG_DETAILS',
@@ -12,14 +13,15 @@ const reducer = (state, action) => {
       return { ...state, songDetails: action.payload.songDetails }
     case constants.GET_SONG_DETAILS_FAILURE:
       return { ...state, error: action.payload.error }
+    default:
+      return state
   }
 }
 
 const useGetSongDetails = (song) => {
   const [state, dispatch] = useReducer(reducer, { songDetails: {} })
-  let tags = {};
-  const getThumbnailUrl = (tags) => {
-    const picture = tags.tags.picture;
+
+  const getThumbnailUrl = (picture) => {
     // create reference to track art
     let base64String = '';
     if (picture) {
@@ -33,23 +35,36 @@ const useGetSongDetails = (song) => {
     return '';
   };
 
-  const getInfo = () => {
-    jsmediatags.read(song, {
-      onSuccess: function (tag) {
-        tags = tag;
-        let artist = tags.tags.artist;
-        let url = getThumbnailUrl(tags);
-        let songDetails = { artist, url };
-        dispatch({ type: constants.GET_SONG_DETAILS_SUCCESS, payload: { songDetails } })
-      },
-      onError: function (error) {
-        console.log(error);
-        dispatch({ type: constants.GET_SONG_DETAILS_FAILURE, payload: { error } })
-      },
-    });
-  }
+  // const getInfo = () => {
+  //   jsmediatags.read(song, {
+  //     onSuccess: function (tag) {
+  //       tags = tag;
+  //       let artist = tags.tags.artist;
+  //       let url = getThumbnailUrl(tags);
+  //       let songDetails = { artist, url };
+  //       dispatch({ type: constants.GET_SONG_DETAILS_SUCCESS, payload: { songDetails } })
+  //     },
+  //     onError: function (error) {
+  //       console.log(error);
+  //       dispatch({ type: constants.GET_SONG_DETAILS_FAILURE, payload: { error } })
+  //     },
+  //   });
+  // }
+
   useEffect(() => {
-    song && getInfo();
+    if (song) {
+      musicMetadata.parseBlob(song).then(metadata => {
+        const { common } = metadata;
+        const cover = musicMetadata.selectCover(common.picture);
+        const url = getThumbnailUrl(cover);
+        const { artist } = common
+        let { duration } = metadata.format;
+        duration = (duration / 60).toFixed(2);
+        let songDetails = { artist, url, duration };
+        dispatch({ type: constants.GET_SONG_DETAILS_SUCCESS, payload: { songDetails } })
+        console.log(metadata);
+      });
+    }
   }, [song])
 
   return state

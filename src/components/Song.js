@@ -27,7 +27,7 @@ const Song = ({ song, songIndex }) => {
           </div>
         </div>
         <div class="song__details--right">
-          <p>3:45</p>
+          <p>{songDetails?.duration}</p>
         </div>
       </div>
     </div>

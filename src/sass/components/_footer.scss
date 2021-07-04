@@ -11,7 +11,7 @@
   border-radius: 1rem 1rem 0 0;
   padding-bottom: 8rem;
   box-sizing: border-box;
-  transform: translateY(-90px);
+  transform: translateY(-91px);
   background: var(--bg-color--tertiary);
   transition: 0.45s;
   box-shadow: 0 0rem 1rem rgba(43, 0, 99, 0.4);
@@ -146,6 +146,8 @@
       line-height:21px;
     }
     p {
+      overflow: hidden;
+      text-overflow: ellipsis;
       margin-top: 4px;
       color: white;
     }

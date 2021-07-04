@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import useGetSongDetails from "../utils/useGetSongDetails"
 import { playSong, togglePlaying } from "../redux/actions"
@@ -6,9 +6,11 @@ import { playSong, togglePlaying } from "../redux/actions"
 const Footer = () => {
   const { playing, songId } = useSelector(state => state.player)
   const songs = useSelector(state => state.songs);
+
   const { songDetails } = useGetSongDetails(songs[songId]);
-  console.log(songDetails)
+
   const dispatch = useDispatch()
+
   const handlePlay = () => {
     dispatch(playSong(songId))
   }
@@ -38,12 +40,8 @@ const Footer = () => {
       </div>
       <div class="footer--topbar">
         <div class="footer--details">
-          <span>
-            <h3>{songs[songId]?.name.substring(0, 12) + '...'}</h3>
-          </span>
-          <span>
-            <p>{songDetails.artist ? songDetails.artist : 'Unknown Artist'}</p>
-          </span>
+          <h3>{songs[songId]?.name}</h3>
+          <p>{songDetails.artist ? songDetails.artist : 'Unknown Artist'}</p>
         </div>
 
         <div class="footer--controls">

@@ -22,12 +22,12 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background: white;
+    background: var(--icon-background-color);
     box-shadow: 0 0.5rem 1rem rgba(88, 61, 145, 0.3);
-    color: rgba(40, 128, 185, 0.6);
+    color: var(--icon-color);
     font-size:20px;
     &:hover{
-      color:#2880b9;
+      color:var(--icon-color);
     }
     input{
       visibility: hidden;

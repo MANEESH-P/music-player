@@ -16,7 +16,7 @@ function App() {
   },[])
 
   return (
-    <div className="container">
+    <div className="container dark">
       <Home />
     </div>
   );

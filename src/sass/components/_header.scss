@@ -2,13 +2,14 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: #2880b9;
+  background: var(--bg-color--primary);
   height: 5rem;
   width: 100%;
-  border-radius: 10px 10px 45px 0px;
+  border-radius: 0px 0px 45px 0px;
   color: white;
   display: flex;
   align-items: center;
+  box-shadow: 0 0rem 1rem rgba(43, 0, 99, 0.4);
   h3 {
     padding: 0px 25px;
   }

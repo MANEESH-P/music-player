@@ -1,12 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-color--tertiary);
+  font-family: "Poppins", sans-serif;
+  h3{
+    font-size:1.17em;
+  }
+  h3,h4 {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+  }
+}
+
 .music-player {
   height: 40rem;
-  width: 20rem;
-  background: white;
+  width: 600px;
+  background: var(--bg-color--primary);
   display: flex;
   position: relative;
   border-radius: 10px 10px 0px 0px;
   padding: 0px 0px 10px 0px;
   overflow: hidden;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
+              0 2px 2px rgba(0,0,0,0.11), 
+              0 4px 4px rgba(0,0,0,0.11), 
+              0 8px 8px rgba(0,0,0,0.11),
+              0 16px 16px rgba(0,0,0,0.11),
+              0 32px 32px rgba(0,0,0,0.11);
   .play-button {
     position: absolute;
     top: 3rem;
@@ -14,7 +38,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: white;
+    background: var(--icon-background-color);
     box-shadow: 0 0.5rem 1rem rgba(88, 61 ,145, 0.3);
     height: 50px;
     width: 50px;
@@ -22,26 +46,27 @@
     border-radius: 50%;
     cursor: pointer;
     i {
-      color: rgba(40, 128, 185, 0.6);
+      color: var(--icon-color);
       font-size: 1.2rem;
       padding-left: 5px;
       transition: 0.15s ease-in;
     }
     &:hover {
       i {
-        color: rgb(40, 128, 185);
+        color: var(--icon-color);
       }
     }
   }
   p {
     font-size: 12px;
-    color: #9a9a9a;
+    color: var(--text-color--secondary);
   }
 }
 
-@media only screen and (max-width: 467px) {
+@media only screen and (max-width: 767px) {
   .music-player{
     width:100vw;
-    height: 100vh;
+    height: 100%;
+    border-radius: 0;
   }
 }

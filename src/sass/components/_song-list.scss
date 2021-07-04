@@ -6,13 +6,12 @@
   margin-top: 5rem;
   overflow: scroll;
   padding: 20px 0px;
-  &.overlay{
-    .music-player__song{
+  &.overlay {
+    .music-player__song {
       transform: translate3d(0, 2rem, -2rem) scale(0.9);
-  opacity: 0.5;
-      
+      opacity: 0.5;
     }
-    .song__cover-image{
+    .song__cover-image {
       transform: translateX(-2rem);
       opacity: 0;
     }

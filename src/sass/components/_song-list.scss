@@ -2,10 +2,9 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  height: calc(100% - 170px);
-  margin-top: 5rem;
+  height: 100%;
+  margin-top: 80px;
   overflow: scroll;
-  padding: 20px 0px;
   &.overlay {
     .music-player__song {
       transform: translate3d(0, 2rem, -2rem) scale(0.9);
@@ -17,6 +16,7 @@
     }
   }
   &--container {
-    padding-bottom: 3rem;
+    padding-top:20px;
+    padding-bottom: 155px;
   }
 }

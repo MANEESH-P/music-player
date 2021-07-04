@@ -2,14 +2,14 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: var(--bg-color--primary);
+  background: var(--bg-color--secondary);
   height: 5rem;
   width: 100%;
   border-radius: 0px 0px 45px 0px;
   color: white;
   display: flex;
   align-items: center;
-  box-shadow: 0 0rem 1rem rgba(43, 0, 99, 0.4);
+  box-shadow: -4px -4px 37px 1px rgba(43, 0, 99, 0.5);
   h3 {
     padding: 0px 25px;
   }

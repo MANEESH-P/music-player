@@ -41,7 +41,7 @@ const Footer = () => {
       <div class="footer--topbar">
         <div class="footer--details">
           <h3>{songs[songId]?.name}</h3>
-          <p>{songDetails.artist ? songDetails.artist : 'Unknown Artist'}</p>
+          <p>{songDetails.artist ? songDetails.artist : ''}</p>
         </div>
 
         <div class="footer--controls">

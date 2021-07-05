@@ -12,6 +12,7 @@
   padding-bottom: 8rem;
   box-sizing: border-box;
   transform: translateY(-91px);
+  will-change: transform;
   background: var(--bg-color--tertiary);
   transition: 0.45s;
   box-shadow: 0 0rem 1rem rgba(43, 0, 99, 0.4);
@@ -79,38 +80,47 @@
       height: 50%;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-around;
     }
     .footer--details {
       display: flex;
       flex-direction: column;
-      flex: 1;
       justify-content: center;
       align-items: center;
       width: 100%;
       max-height: unset;
       padding: 16px 24px;
-      h3,p {
+      user-select: none;
+      h4,
+      p {
         width: calc(80% - 10px);
         text-align: center;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        margin:0 auto;
+        margin: 0 auto;
         line-height: 24px;
       }
-      p{
-        margin-top:6px;
+      h4{
+        font-size:22px;
+        text-transform: uppercase;
+      }
+      p {
+        margin-top: 6px;
       }
     }
     .footer--controls {
+      margin-right: 0;
       i:first-child {
         display: inline-block;
       }
+      i:nth-of-type(2) {
+        margin: 0px 24px;
+      }
     }
     .song--status {
-      position:static;
-      margin-top:8px;
+      position: static;
+      margin-top: 8px;
       width: calc(100% - 3rem);
     }
   }
@@ -136,14 +146,18 @@
   }
   .footer--details {
     width: calc(60% - 10px);
-    height: 35px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    user-select: none;
+    display: flex;
+    user-select: none;
+    flex-direction: column;
+    justify-content: center;
     h3 {
       overflow: hidden;
       text-overflow: ellipsis;
-      line-height:21px;
+      line-height: 21px;
     }
     p {
       overflow: hidden;
@@ -155,7 +169,7 @@
   .footer__drawer-icon {
     position: absolute;
     top: -15px;
-    right: 13px;
+    right: 16px;
     height: 30px;
     width: 30px;
     border-radius: 5px;
@@ -174,14 +188,14 @@
     &:hover {
       border-radius: 50%;
       i {
-        color:var(--icon-color);
+        color: var(--icon-color);
       }
     }
   }
   .footer--controls {
     margin-right: 16px;
     i {
-      font-size: 1.2rem;
+      font-size: 24px;
       color: white;
       transition: 0.15s ease-in;
       padding: 12px;
@@ -190,15 +204,11 @@
       &:first-child {
         display: none;
       }
-      &:hover {
-        color: var(--icon-color);
-        background: white;
-      }
     }
   }
   .song--status {
     position: absolute;
-    bottom:-12px;
+    bottom: -12px;
     display: flex;
     width: 100%;
     height: 0.2rem;

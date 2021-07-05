@@ -26,6 +26,19 @@ const Footer = () => {
       ? (songId - 1) % songs.length
       : songs.length - 1)))
   }
+
+  useEffect(() => {
+    let popup = document.getElementById('popup');
+    popup.addEventListener('click', function () {
+      let songContainer = document.getElementById('songs-container');
+      songContainer.classList.toggle('overlay')
+      let footer = document.getElementById('footer');
+      footer.classList.toggle('expanded')
+      let headerButton = document.getElementById('headerButton');
+      headerButton.classList.toggle('hidden')
+    })
+  },[])
+
   return (
     <div class="music-player__footer" id="footer">
       <div class="song__cover--wrapper">
@@ -40,7 +53,7 @@ const Footer = () => {
       </div>
       <div class="footer--topbar">
         <div class="footer--details">
-          <h3>{songs[songId]?.name}</h3>
+          <h4>{songs[songId]?.name}</h4>
           <p>{songDetails.artist ? songDetails.artist : ''}</p>
         </div>
 

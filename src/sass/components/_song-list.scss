@@ -5,6 +5,7 @@
   height: 100%;
   margin-top: 80px;
   overflow: scroll;
+  user-select: none;
   &.overlay {
     .music-player__song {
       transform: translate3d(0, 2rem, -2rem) scale(0.9);
@@ -16,7 +17,18 @@
     }
   }
   &--container {
-    padding-top:20px;
+    padding-top: 20px;
     padding-bottom: 155px;
+    animation: slidein .5s var(--transition) 1;
+  }
+}
+
+@keyframes slidein {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }

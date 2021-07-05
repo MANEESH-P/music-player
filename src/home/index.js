@@ -42,7 +42,6 @@ const Home = () => {
       play(0);
     } else if (player.songId === prevPlayer.songId) {
       // RESUME
-      console.log('Should only resume');
       audioPlayer.play();
       // Start playing
     } else {

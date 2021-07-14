@@ -15,7 +15,7 @@ const Footer = ({ audioPlayer }) => {
   const dispatch = useDispatch()
 
   const handlePlay = () => {
-    if (songId) {
+    if (songId !== undefined) {
       dispatch(playSong(songId))
     }
   }
@@ -23,13 +23,13 @@ const Footer = ({ audioPlayer }) => {
     dispatch(togglePlaying())
   }
   const handlePlayNext = () => {
-    if (songId) {
+    if (songId !== undefined) {
       dispatch(playSong((songId + 1) % songs.length))
     }
   }
 
   const handlePlayPrev = () => {
-    if (songId) {
+    if (songId !== undefined) {
       dispatch(playSong((songId > 0
         ? (songId - 1) % songs.length
         : songs.length - 1)))
@@ -65,7 +65,7 @@ const Footer = ({ audioPlayer }) => {
       <div class="footer--topbar">
         <div class="footer--details">
           <h4>{noSongsAdded ? 'No song added' : songs[songId]?.name}</h4>
-          <p>{songDetails.artist ? songDetails.artist : ''}</p>
+          <p>{songDetails.artist ? songDetails.artist : 'Unknown Artist'}</p>
         </div>
 
         <div class="footer--controls">

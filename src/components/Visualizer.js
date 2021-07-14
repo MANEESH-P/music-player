@@ -70,7 +70,7 @@ const Visualizer = ({
         // var b = 50;
 
         ctx.fillStyle = "rgba(255,255,255, 0.3)";
-        ctx.fillRect(x, HEIGHT - barHeight + 50, barWidth, barHeight - 20);
+        ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
 
         x += barWidth + 1;
       }

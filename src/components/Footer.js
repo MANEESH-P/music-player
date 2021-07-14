@@ -1,30 +1,39 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import useGetSongDetails from "../utils/useGetSongDetails"
 import { playSong, togglePlaying } from "../redux/actions"
+import Visualizer from './Visualizer';
 
-const Footer = () => {
-  const { playing, songId } = useSelector(state => state.player)
+const Footer = ({ audioPlayer }) => {
+  const [footerExpanded, setFooterExpanded] = useState(false);
+
   const songs = useSelector(state => state.songs);
+  const { playing, songId } = useSelector(state => state.player)
 
   const { songDetails } = useGetSongDetails(songs[songId]);
 
   const dispatch = useDispatch()
 
   const handlePlay = () => {
-    dispatch(playSong(songId))
+    if (songId) {
+      dispatch(playSong(songId))
+    }
   }
   const handlePause = () => {
     dispatch(togglePlaying())
   }
   const handlePlayNext = () => {
-    dispatch(playSong((songId + 1) % songs.length))
+    if (songId) {
+      dispatch(playSong((songId + 1) % songs.length))
+    }
   }
 
   const handlePlayPrev = () => {
-    dispatch(playSong((songId > 0
-      ? (songId - 1) % songs.length
-      : songs.length - 1)))
+    if (songId) {
+      dispatch(playSong((songId > 0
+        ? (songId - 1) % songs.length
+        : songs.length - 1)))
+    }
   }
 
   useEffect(() => {
@@ -37,23 +46,25 @@ const Footer = () => {
       let headerButton = document.getElementById('headerButton');
       headerButton.classList.toggle('hidden')
     })
-  },[])
+  }, [])
+
+  const noSongsAdded = songs.length === 0;
 
   return (
     <div class="music-player__footer" id="footer">
       <div class="song__cover--wrapper">
         <div class="song__cover" style={{ backgroundImage: `url('${songDetails?.url}')`, backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
-        <div class="song__actions">
+        {/* <div class="song__actions">
           <i class="fas fa-random"></i>
           <i class="fas fa-redo"></i>
-        </div>
+        </div> */}
       </div>
-      <div class="footer__drawer-icon" id="popup">
+      <div class="footer__drawer-icon" id="popup" onClick={() => setFooterExpanded(!footerExpanded)}>
         <i class="fas fa-angle-up"></i>
       </div>
       <div class="footer--topbar">
         <div class="footer--details">
-          <h4>{songs[songId]?.name}</h4>
+          <h4>{noSongsAdded ? 'No song added' : songs[songId]?.name}</h4>
           <p>{songDetails.artist ? songDetails.artist : ''}</p>
         </div>
 
@@ -70,6 +81,9 @@ const Footer = () => {
           <progress id="progress" value={0} max={100} />
         </div>
       </div>
+      {footerExpanded &&
+        <Visualizer playing={playing} audioPlayer={audioPlayer} />
+      }
     </div>
   )
 }

@@ -21,6 +21,22 @@
     padding-bottom: 155px;
     animation: slidein .5s var(--transition) 1;
   }
+  &--no-songs{
+    display:flex;
+    flex-direction: column;
+    height:calc(100% - 120px);
+    align-items:center;
+    justify-content:center;
+    color:white;
+    svg{
+      margin-bottom:12px;
+      height:48px;
+      width:48px;
+    }
+    h5{
+      font-size:16px;
+    }
+  }
 }
 
 @keyframes slidein {

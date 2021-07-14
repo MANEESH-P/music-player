@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 import SongList from "../components/SongList";
 import AddSong from '../components/AddSong';
 
-let audioPlayer = null;
 
 const Home = () => {
   const songs = useSelector(state => state.songs);
@@ -24,10 +23,11 @@ const Home = () => {
   };
 
   const prevPlayer = usePrevious(player);
+  let audioPlayer = useRef(null);
 
   useEffect(() => {
     if (songs[0]) {
-      audioPlayer.src = URL.createObjectURL(songs[0]);
+      audioPlayer.current.src = URL.createObjectURL(songs[0]);
     }
   }, []);
 
@@ -37,12 +37,12 @@ const Home = () => {
     // }
     if (!player.playing) {
       // PAUSE
-      audioPlayer.pause();
+      audioPlayer.current.pause();
     } else if (player.songId === -1) {
       play(0);
     } else if (player.songId === prevPlayer.songId) {
       // RESUME
-      audioPlayer.play();
+      audioPlayer.current.play();
       // Start playing
     } else {
       play(player.songId);
@@ -60,8 +60,8 @@ const Home = () => {
   const play = (id) => {
     if (songs[id]) {
       const fileSrc = URL.createObjectURL(songs[id]);
-      audioPlayer.src = fileSrc;
-      audioPlayer.play();
+      audioPlayer.current.src = fileSrc;
+      audioPlayer.current.play();
       window.document.title = songs[id].name.replace('.mp3', '');
     }
   };
@@ -89,15 +89,13 @@ const Home = () => {
       <Header />
       <SongList />
       <AddSong />
-      <Footer />
+      <Footer audioPlayer={audioPlayer.current}/>
       <audio
         hidden
         controls
         id='player'
         onEnded={songEnded}
-        ref={(audio) => {
-          audioPlayer = audio;
-        }}
+        ref={audioPlayer}
         // onLoadedMetadata={mDur}
         onTimeUpdate={updateProgress}
       >

@@ -62,7 +62,6 @@ const useGetSongDetails = (song) => {
         duration = (duration / 60).toFixed(2);
         let songDetails = { artist, url, duration };
         dispatch({ type: constants.GET_SONG_DETAILS_SUCCESS, payload: { songDetails } })
-        console.log(metadata);
       });
     }
   }, [song])

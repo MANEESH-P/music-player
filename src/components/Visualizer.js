@@ -106,7 +106,7 @@ const Visualizer = ({
 
     return () => stop();
 
-  }, [audioPlayer, playing]);
+  }, [playing]);
 
   return (
     <canvas

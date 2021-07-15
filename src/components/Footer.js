@@ -81,9 +81,9 @@ const Footer = ({ audioPlayer }) => {
           <progress id="progress" value={0} max={100} />
         </div>
       </div>
-      {footerExpanded &&
+      {/* {footerExpanded &&
         <Visualizer playing={playing} audioPlayer={audioPlayer} />
-      }
+      } */}
     </div>
   )
 }

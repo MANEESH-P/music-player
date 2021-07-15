@@ -33,13 +33,13 @@ const Visualizer = ({
       .getPropertyValue('width')
       .slice(0, -2);
     // scale the canvas
-    canvas.setAttribute('height', 400);
-    canvas.setAttribute('width', 700);
+    canvas.setAttribute('height', 500);
+    canvas.setAttribute('width', 600);
 
     src.connect(analyser);
     analyser.connect(context.destination);
 
-    analyser.fftSize = 2048;
+    analyser.fftSize = 256;
 
     let bufferLength = analyser.frequencyBinCount;
 
@@ -75,50 +75,50 @@ const Visualizer = ({
 
     const renderFrame = () => {
       // // requestAnimationFrame(renderFrame);
-      // x = 0;
-      // analyser.getByteFrequencyData(dataArray);
+      x = 0;
+      analyser.getByteFrequencyData(dataArray);
 
-      // ctx.fillStyle = '#4e3561';
-      // ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-      // for (let i = 25; i < bufferLength; i++) {
-      //   barHeight = dataArray[i];
-      //   // var r = barHeight + (25 * (i/bufferLength));
-      //   // var g = 250 * (i/bufferLength);
-      //   // var b = 50;
-
-      //   ctx.fillStyle = "#3b1f50";
-      //   ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
-
-      //   x += barWidth + 1;
-      // }
-
-      analyser.getByteTimeDomainData(dataArray); // get waveform data and put it into the array created above
-
-      ctx.fillStyle = "#4e3561"; // draw wave with canvas
+      ctx.fillStyle = '#4e3561';
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-      ctx.lineWidth = 2;
+      for (let i = 0; i < bufferLength; i++) {
+        barHeight = dataArray[i];
+        // var r = barHeight + (25 * (i/bufferLength));
+        // var g = 250 * (i/bufferLength);
+        // var b = 50;
 
-      ctx.beginPath();
+        ctx.fillStyle = "#3b1f50";
+        ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
 
-      var sliceWidth = (WIDTH * 1.0) / bufferLength;
-      var x = 0;
-
-      for (var i = 0; i < bufferLength; i++) {
-        var v = dataArray[i] / 128.0;
-        var y = (v * HEIGHT) / 2;
-
-        ctx.strokeStyle = color();
-
-        if (i === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
-
-        x += sliceWidth;
+        x += barWidth + 1;
       }
+
+      // analyser.getByteTimeDomainData(dataArray); // get waveform data and put it into the array created above
+
+      // ctx.fillStyle = "#4e3561"; // draw wave with canvas
+      // ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+      // ctx.lineWidth = 2;
+
+      // ctx.beginPath();
+
+      // var sliceWidth = (WIDTH * 1.0) / bufferLength;
+      // var x = 0;
+
+      // for (var i = 0; i < bufferLength; i++) {
+      //   var v = dataArray[i] / 128.0;
+      //   var y = (v * HEIGHT) / 2;
+
+      //   ctx.strokeStyle = color();
+
+      //   if (i === 0) {
+      //     ctx.moveTo(x, y);
+      //   } else {
+      //     ctx.lineTo(x, y);
+      //   }
+
+      //   x += sliceWidth;
+      // }
 
       ctx.lineTo(WIDTH, HEIGHT / 2);
       ctx.stroke();

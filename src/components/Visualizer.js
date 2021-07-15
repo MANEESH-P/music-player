@@ -81,7 +81,7 @@ const Visualizer = ({
       ctx.fillStyle = '#4e3561';
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-      for (let i = 0; i < bufferLength; i++) {
+      for (let i = 25; i < bufferLength; i++) {
         barHeight = dataArray[i];
         // var r = barHeight + (25 * (i/bufferLength));
         // var g = 250 * (i/bufferLength);
@@ -126,7 +126,7 @@ const Visualizer = ({
     start();
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const stop = () => {
       if (animationFrameRequestId) {
         cancelAnimationFrame(animationFrameRequestId);
@@ -144,7 +144,7 @@ const Visualizer = ({
 
     return () => stop();
 
-  }, [playing]);
+  }, []);
 
   return (
     <canvas

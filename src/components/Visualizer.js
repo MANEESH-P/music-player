@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useEffect, useLayoutEffect } from 'react';
 
 let animationFrameRequestId;
 let context;
@@ -88,7 +88,7 @@ const Visualizer = ({
     start();
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const stop = () => {
       if (animationFrameRequestId) {
         cancelAnimationFrame(animationFrameRequestId);

@@ -32,7 +32,7 @@ const Visualizer = ({
     let style_width = +getComputedStyle(canvas)
       .getPropertyValue('width')
       .slice(0, -2);
-    //scale the canvas
+    // scale the canvas
     canvas.setAttribute('height', style_height * dpi);
     canvas.setAttribute('width', style_width * dpi);
 
@@ -52,11 +52,22 @@ const Visualizer = ({
     let barHeight;
     let x = 0;
 
-    function renderFrame() {
-      requestAnimationFrame(renderFrame);
+    const loop = () => {
+      animationFrameRequestId = undefined;
 
+      start();
+      renderFrame();
+    };
+
+    const start = () => {
+      if (!animationFrameRequestId) {
+        animationFrameRequestId = requestAnimationFrame(loop);
+      }
+    };
+
+    const renderFrame = () => {
+      // requestAnimationFrame(renderFrame);
       x = 0;
-
       analyser.getByteFrequencyData(dataArray);
 
       ctx.fillStyle = '#4e3561';
@@ -64,18 +75,17 @@ const Visualizer = ({
 
       for (let i = 25; i < bufferLength; i++) {
         barHeight = dataArray[i];
-
         // var r = barHeight + (25 * (i/bufferLength));
         // var g = 250 * (i/bufferLength);
         // var b = 50;
 
-        ctx.fillStyle = "rgba(255,255,255, 0.3)";
+        ctx.fillStyle = "#3b1f50";
         ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
 
         x += barWidth + 1;
       }
     }
-    renderFrame();
+    start();
   };
 
   useLayoutEffect(() => {

@@ -7,10 +7,17 @@ import App from './App';
 import reducers from './redux/reducers';
 import { saveState, getState } from './redux/store/localStore';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import mediaNotification from './utils/mediaSession';
 
 getState().then((localState) => {
   let store;
   store = createStore(reducers, localState, composeWithDevTools());
+  store.subscribe(() => {
+    saveState({
+      songs: store.getState().songs,
+    });
+  });
+  mediaNotification.setStore(store);
   store.subscribe(() => {
     saveState({
       songs: store.getState().songs,

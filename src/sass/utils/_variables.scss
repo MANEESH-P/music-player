@@ -5,18 +5,27 @@
 }
 .dark {
   --bg-color--primary: #3b1f50;
+  // --bg-color--primary: #000000;
   --bg-color--secondary: #3b1f50;
+  // --bg-color--secondary: rgba(255,255,255,0.2);
   --bg-color--tertiary: #4e3561;
+  // --bg-color--tertiary: rgba(255,255,255,0.2);
   --accent-color: #d594ee;
   --text-color--primary: #ffffff;
   --text-color--secondary: #d594ee;
+  // --text-color--secondary: #ffffff;
   --gradient-primary: rgba(213, 148, 238, 0.4);
+  // --gradient-primary: rgba(255, 255, 255, 0.4);
+
   --gradient-seondary: rgba(213, 148, 238, 0.04);
+  // --gradient-seondary: rgba(255, 255, 255, 0.04);
+
   --button-color: #d933c3;
   --button-color--secondary: rgba(217, 51, 195, 0.6);
   --icon-background-color:#ffffff;
   --icon-color:#3b1f50;
 }
+
 
 :root {
   --transition: cubic-bezier(0.62, 0.44, 0, 1);

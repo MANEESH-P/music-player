@@ -1,4 +1,4 @@
-import { useRef, useEffect, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 
 let animationFrameRequestId;
 let context;
@@ -35,20 +35,7 @@ const Visualizer = ({
     canvas.setAttribute('width', 600);
 
     let WIDTH = canvas.width;
-    let HEIGHT = canvas.height;
-
-    // scale the canvas
-    // let dpi = window.devicePixelRatio;
-
-    // let style_height = +getComputedStyle(canvas)
-    //   .getPropertyValue('height')
-    //   .slice(0, -2);
-
-    // let style_width = +getComputedStyle(canvas)
-    //   .getPropertyValue('width')
-    //   .slice(0, -2);
-    
-    
+    let HEIGHT = canvas.height;    
 
     let bufferLength = analyser.frequencyBinCount;
     let dataArray = new Uint8Array(bufferLength);
@@ -79,54 +66,19 @@ const Visualizer = ({
     };
 
     const renderFrame = () => {
-      // // requestAnimationFrame(renderFrame);
       x = 0;
       analyser.getByteFrequencyData(dataArray);
 
       ctx.fillStyle = '#4e3561';
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
+      
       for (let i = 25; i < bufferLength; i++) {
         barHeight = dataArray[i];
-        // var r = barHeight + (25 * (i/bufferLength));
-        // var g = 250 * (i/bufferLength);
-        // var b = 50;
 
         ctx.fillStyle = "#3b1f50";
         ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
-
         x += barWidth + 1;
       }
-
-      // analyser.getByteTimeDomainData(dataArray); // get waveform data and put it into the array created above
-
-      // ctx.fillStyle = "#4e3561"; // draw wave with canvas
-      // ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-      // ctx.lineWidth = 2;
-
-      // ctx.beginPath();
-
-      // var sliceWidth = (WIDTH * 1.0) / bufferLength;
-      // var x = 0;
-
-      // for (var i = 0; i < bufferLength; i++) {
-      //   var v = dataArray[i] / 128.0;
-      //   var y = (v * HEIGHT) / 2;
-
-      //   ctx.strokeStyle = color();
-
-      //   if (i === 0) {
-      //     ctx.moveTo(x, y);
-      //   } else {
-      //     ctx.lineTo(x, y);
-      //   }
-
-      //   x += sliceWidth;
-      // }
-
-      // ctx.lineTo(WIDTH, HEIGHT / 2);
-      // ctx.stroke();
     }
     start();
   };

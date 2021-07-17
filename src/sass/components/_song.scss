@@ -51,7 +51,7 @@
       }
     }
   }
-  .song__cover-image {
+  .song-details__cover-image {
     width: 45px;
     height: 45px;
     border-radius: 10px;
@@ -68,7 +68,7 @@
     z-index: -1;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to right, rgba(213, 148, 238, 0.2), rgba(213, 148, 238, 0.02));
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.02));
     opacity: 0;
     transition: 0.3s ease-out;
     transform: translateX(-100%);

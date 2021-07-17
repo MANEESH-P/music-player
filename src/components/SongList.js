@@ -6,7 +6,7 @@ const SongList = () => {
   const songs = useSelector(state => state.songs);
   const noSongsAdded = songs?.length === 0;
   return (
-    <div class="music-player__song-list" id=
+    <div className="music-player__song-list" id=
       "songs-container">
       {noSongsAdded ?
         <div className="music-player__song-list--no-songs">
@@ -21,7 +21,7 @@ const SongList = () => {
           <h5>Add your favourite songs to get started!</h5>
         </div>
         :
-        <div class="music-player__song-list--container" >
+        <div className="music-player__song-list--container" >
           {songs.map((song, index) => {
             return <Song song={song} songIndex={index} key={index} />
           })}

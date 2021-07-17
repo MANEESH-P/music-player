@@ -57,11 +57,11 @@ const Home = () => {
     }
   };
 
-  const play = (id) => {
+  const play = async (id) => {
     if (songs[id]) {
       const fileSrc = URL.createObjectURL(songs[id]);
       audioPlayer.current.src = fileSrc;
-      audioPlayer.current.play();
+      await audioPlayer.current.play();
       window.document.title = songs[id].name.replace('.mp3', '');
     }
   };

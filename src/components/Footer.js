@@ -51,33 +51,33 @@ const Footer = ({ audioPlayer }) => {
   const noSongsAdded = songs.length === 0;
 
   return (
-    <div class="music-player__footer" id="footer">
-      <div class="song__cover--wrapper">
-        <div class="song__cover" style={{ backgroundImage: `url('${songDetails?.url}')`, backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
-        {/* <div class="song__actions">
-          <i class="fas fa-random"></i>
-          <i class="fas fa-redo"></i>
+    <div className="music-player__footer" id="footer">
+      <div className="song__cover--wrapper">
+        <div className="song__cover" style={{ backgroundImage: `url('${songDetails?.url}')`, backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
+        {/* <div className="song__actions">
+          <i className="fas fa-random"></i>
+          <i className="fas fa-redo"></i>
         </div> */}
       </div>
-      <div class="footer__drawer-icon" id="popup" onClick={() => setFooterExpanded(!footerExpanded)}>
-        <i class="fas fa-angle-up"></i>
+      <div className="footer__drawer-icon" id="popup" onClick={() => setFooterExpanded(!footerExpanded)}>
+        <i className="fas fa-angle-up"></i>
       </div>
-      <div class="footer--topbar">
-        <div class="footer--details">
+      <div className="footer--topbar">
+        <div className="footer--details">
           <h4>{noSongsAdded ? 'No song added' : songs[songId]?.name}</h4>
           <p>{songDetails.artist ? songDetails.artist : 'Unknown Artist'}</p>
         </div>
 
-        <div class="footer--controls">
-          <i class="fas fa-backward" onClick={() => handlePlayPrev()}></i>
+        <div className="footer--controls">
+          <i className="fas fa-backward" onClick={() => handlePlayPrev()}></i>
           {playing ?
-            <i class="fas fa-pause" onClick={() => handlePause()}></i>
+            <i className="fas fa-pause" onClick={() => handlePause()}></i>
             :
-            <i class="fas fa-play" onClick={() => handlePlay()}></i>
+            <i className="fas fa-play" onClick={() => handlePlay()}></i>
           }
-          <i class="fas fa-forward" onClick={() => handlePlayNext()}></i>
+          <i className="fas fa-forward" onClick={() => handlePlayNext()}></i>
         </div>
-        <div class="song--status">
+        <div className="song--status">
           <progress id="progress" value={0} max={100} />
         </div>
       </div>

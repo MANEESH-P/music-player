@@ -3,6 +3,7 @@ import { useRef, useEffect, useLayoutEffect } from 'react';
 let animationFrameRequestId;
 let context;
 let src;
+
 const Visualizer = ({
   audioPlayer,
   playing,
@@ -11,49 +12,53 @@ const Visualizer = ({
   const canvasRef = useRef(null);
 
   const visualize = () => {
-    let audio = audioPlayer;
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+
     if (context === undefined) {
       context = new AudioContext();
     }
-    if (src === undefined) {
-      src = context.createMediaElementSource(audio);
-    }
-    let analyser = context.createAnalyser();
 
-    let canvas = canvasRef.current;
-
-    let dpi = window.devicePixelRatio;
-
-    let ctx = canvas.getContext('2d');
-    let style_height = +getComputedStyle(canvas)
-      .getPropertyValue('height')
-      .slice(0, -2);
-
-    let style_width = +getComputedStyle(canvas)
-      .getPropertyValue('width')
-      .slice(0, -2);
-    // scale the canvas
-    canvas.setAttribute('height', 500);
-    canvas.setAttribute('width', 600);
-
-    src.connect(analyser);
-    analyser.connect(context.destination);
+    const analyser = context.createAnalyser();
 
     analyser.fftSize = 256;
 
-    let bufferLength = analyser.frequencyBinCount;
+    if (src === undefined) {
+      src = context.createMediaElementSource(audioPlayer);
+    }
 
-    let dataArray = new Uint8Array(bufferLength);
+    src.connect(analyser);
+    src.connect(context.destination);
+    
+
+    canvas.setAttribute('height', 500);
+    canvas.setAttribute('width', 600);
 
     let WIDTH = canvas.width;
     let HEIGHT = canvas.height;
 
-    let barWidth = (WIDTH / bufferLength) * 2.5;
-    let barHeight;
-    let x = 0;
+    // scale the canvas
+    // let dpi = window.devicePixelRatio;
+
+    // let style_height = +getComputedStyle(canvas)
+    //   .getPropertyValue('height')
+    //   .slice(0, -2);
+
+    // let style_width = +getComputedStyle(canvas)
+    //   .getPropertyValue('width')
+    //   .slice(0, -2);
+    
+    
+
+    let bufferLength = analyser.frequencyBinCount;
+    let dataArray = new Uint8Array(bufferLength);
 
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
 
+    let barWidth = (WIDTH / bufferLength) * 2.5;
+    let barHeight;
+    let x = 0;
+    
     const color = () => {
       var c = () => Math.random() * 255;
 
@@ -120,8 +125,8 @@ const Visualizer = ({
       //   x += sliceWidth;
       // }
 
-      ctx.lineTo(WIDTH, HEIGHT / 2);
-      ctx.stroke();
+      // ctx.lineTo(WIDTH, HEIGHT / 2);
+      // ctx.stroke();
     }
     start();
   };
@@ -134,17 +139,16 @@ const Visualizer = ({
       }
     };
 
-    if (audioPlayer) {
-      if (playing) {
-        visualize();
-      } else {
-        stop();
-      }
+
+    if (playing) {
+      visualize();
+    } else {
+      stop();
     }
 
     return () => stop();
 
-  }, []);
+  }, [audioPlayer, playing]);
 
   return (
     <canvas

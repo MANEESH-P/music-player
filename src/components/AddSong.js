@@ -20,7 +20,7 @@ const AddSong = () => {
           accept='audio/mp3'
         />
         <label htmlFor="song-input">
-          <i class="fas fa-plus"></i>
+          <i className="fas fa-plus"></i>
         </label>
       </div>
     </div>

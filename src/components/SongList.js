@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import Song from './Song';
 
-const SongList = () => {
+const SongList = ({audioPlayer}) => {
   const songs = useSelector(state => state.songs);
   const noSongsAdded = songs?.length === 0;
   return (
@@ -23,7 +23,7 @@ const SongList = () => {
         :
         <div className="music-player__song-list--container" >
           {songs.map((song, index) => {
-            return <Song song={song} songIndex={index} key={index} />
+            return <Song song={song} songIndex={index} key={index} audioPlayer={audioPlayer} />
           })}
         </div>
       }

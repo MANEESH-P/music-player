@@ -8,7 +8,7 @@ import AddSong from '../components/AddSong';
 
 
 const Home = () => {
-  const [currentTime,setCurrentTime] = useState('00.00');
+  const [currentTime, setCurrentTime] = useState('00.00');
 
   const songs = useSelector(state => state.songs);
   const player = useSelector(state => state.player)
@@ -43,7 +43,14 @@ const Home = () => {
       play(0);
     } else if (player.songId === prevPlayer.songId) {
       // RESUME
-      audioPlayer.current.play();
+      if (audioPlayer.current.src) {
+        audioPlayer.current.play();
+      } else {
+        if (songs[player.songId]) {
+          audioPlayer.current.src = URL.createObjectURL(songs[player.songId]);
+          audioPlayer.current.play();
+        }
+      }
       // Start playing
     } else {
       play(player.songId);
@@ -93,9 +100,9 @@ const Home = () => {
   return (
     <div className="music-player">
       <Header />
-      <SongList />
+      <SongList audioPlayer={audioPlayer.current} />
       <AddSong />
-      <Footer audioPlayer={audioPlayer.current} currentTime={currentTime}/>
+      <Footer audioPlayer={audioPlayer.current} currentTime={currentTime} />
       <audio
         hidden
         controls

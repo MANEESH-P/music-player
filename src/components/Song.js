@@ -14,6 +14,8 @@ const Song = ({ song, songIndex }) => {
 
   const dispatch = useDispatch();
 
+  const audioPlayer = document.getElementById('player')
+
   const handleClick = (songId) => {
     dispatch(playSong(songId))
   }
@@ -25,23 +27,38 @@ const Song = ({ song, songIndex }) => {
   }
 
   const changeActiveSong = (songId) => {
+    let nextIndex
     if (songId !== undefined) {
-      setActiveSong(playSong((songId + 1) % songs.length))
+      if (songId === currentSongId) {
+        nextIndex = songs[songId] ? songId : (currentSongId + 1) % songs.length
+        dispatch(setActiveSong(nextIndex))
+      } else if (songId < currentSongId) {
+        nextIndex = (currentSongId - 1) % songs.length
+        dispatch(setActiveSong(nextIndex))
+      } else {
+        nextIndex = (currentSongId) % songs.length
+        dispatch(setActiveSong(nextIndex))
+      }
     }
   }
 
   const handleDelete = (e, songId) => {
     if (playing) {
-      handlePlayNext(songId);
-    }else{
+      dispatch(playSong(songId))
+    } else {
       changeActiveSong(songId)
     }
-    e.stopPropagation();
     dispatch(deleteSong(songId))
+
+    audioPlayer.removeAttribute('src')
+
+    e.stopPropagation();
   }
 
+  console.log(audioPlayer);
+
   return (
-    <div className={`music-player__song ${songIndex === currentSongId ? 'music-player__song--active' : ''}`} style={{ transitionDelay: `${songIndex*0.075}s` }} onClick={() => handleClick(songIndex)}>
+    <div className={`music-player__song ${songIndex === currentSongId ? 'music-player__song--active' : ''}`} style={{ transitionDelay: `${songIndex * 0.075}s` }} onClick={() => handleClick(songIndex)}>
       <div className="song__details">
         <div className="song__details--left">
           <div className="song-details__cover-image" style={{ backgroundImage: `url('${songDetails?.url}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>

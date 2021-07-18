@@ -3,8 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom:120px;
-  right:8px;
+  top:3rem;
+  right:15px;
   cursor: pointer;  
   .add-song__button {
     width: 48px;
@@ -39,5 +39,8 @@
       border-radius: 50%;
       cursor: pointer;
     }
+  }
+  &.hidden{
+    transform:translateX(100px);
   }
 }

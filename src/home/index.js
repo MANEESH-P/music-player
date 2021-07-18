@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { togglePlaying, playSong } from '../redux/actions';
 import Header from "../components/Header";
@@ -8,9 +8,10 @@ import AddSong from '../components/AddSong';
 
 
 const Home = () => {
+  const [currentTime,setCurrentTime] = useState('00.00');
+
   const songs = useSelector(state => state.songs);
   const player = useSelector(state => state.player)
-  const repeat = useSelector(state => state.repeat);
 
   const dispatch = useDispatch();
 
@@ -49,11 +50,16 @@ const Home = () => {
     }
   }, [player]);
 
+  const getTime = (time) => {
+    return time ? new Date(time * 1000).toISOString().substr(14, 5) : '';
+  };
+
   const updateProgress = () => {
     var aud = document.getElementById('player');
     var progressBar = document.getElementById('progress');
     if (aud.currentTime && aud.duration) {
       progressBar.value = (aud.currentTime / aud.duration) * 100;
+      setCurrentTime(getTime(aud.currentTime))
     }
   };
 
@@ -74,10 +80,10 @@ const Home = () => {
 
   const songEnded = () => {
     // No repeat
-    if (repeat === 0) {
+    if (player.repeat === 0) {
       URL.revokeObjectURL(songs[player.songId]);
       if (player.songId < songs.length - 1) dispatch(playSong(player.songId + 1));
-    } else if (repeat === 1) {
+    } else if (player.repeat === 1) {
       // repeat one
       dispatch(playSong(player.songId));
       // repeat all
@@ -89,7 +95,7 @@ const Home = () => {
       <Header />
       <SongList />
       <AddSong />
-      <Footer audioPlayer={audioPlayer.current}/>
+      <Footer audioPlayer={audioPlayer.current} currentTime={currentTime}/>
       <audio
         hidden
         controls

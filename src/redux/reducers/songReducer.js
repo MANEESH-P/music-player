@@ -6,7 +6,7 @@ export default (state = [], action) => {
       return [...state, ...action.payload];
     }
     case DELETE_SONG: {
-      return state.filter((song, index) => index !== action.id);
+      return state.filter((song, index) => index !== action.payload);
     }
     default: {
       return state;

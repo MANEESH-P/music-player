@@ -6,6 +6,7 @@ export const TOGGLE_PLAYING = 'TOGGLE_PLAYING';
 export const PLAY_NEXT_SONG = 'PLAY_NEXT_SONG';
 export const PLAY_PREV_SONG = 'PLAY_PREV_SONG';
 export const REPEAT = 'REPEAT';
+export const SET_ACTIVE_SONG = 'SET_ACTIVE_SONG';
 
 export const fetchSongs = () => {
   return {
@@ -20,10 +21,10 @@ export const addSongs = (songs) => {
   };
 };
 
-export const deleteSong = (song) => {
+export const deleteSong = (id) => {
   return {
     type: DELETE_SONG,
-    payload: song,
+    payload: id,
   };
 };
 
@@ -52,8 +53,16 @@ export const playPrevSong = () => {
   };
 };
 
-export const repeatSong = () => {
+export const repeatSong = (repeat) => {
   return {
     type: REPEAT,
+    payload:repeat
   };
 };
+
+export const setActiveSong = (id) => {
+  return {
+    type:SET_ACTIVE_SONG,
+    payload: id
+  }
+}

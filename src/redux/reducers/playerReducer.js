@@ -1,4 +1,4 @@
-import { PLAY_SONG, TOGGLE_PLAYING, REPEAT } from '../actions';
+import { PLAY_SONG, TOGGLE_PLAYING, SET_ACTIVE_SONG, REPEAT } from '../actions';
 
 const initalState = {
   playing: false,
@@ -16,6 +16,9 @@ export default (state = initalState, action) => {
     }
     case REPEAT: {
       return { ...state, repeat: action.payload };
+    }
+    case SET_ACTIVE_SONG: {
+      return {...state, songId: action.payload};
     }
     default: {
       return state;

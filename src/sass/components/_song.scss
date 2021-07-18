@@ -20,6 +20,13 @@
       max-width: 85%;
     }
     &--right {
+      display:flex;
+      align-items:center;
+      z-index:2;
+      svg{
+        fill:white;
+        margin-left:8px;
+      }
       p {
         color: var(--text-color--secondary);
         opacity: 0.7;
@@ -30,7 +37,7 @@
     margin-left: 10px;
     display: flex;
     flex-direction: column;
-    max-width: calc(100% - 55px);
+    max-width: calc(100% - 65px);
     .song__title {
       color: var(--text-color--primary);
       margin-bottom: 4px;

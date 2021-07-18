@@ -1,16 +1,45 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { playSong, togglePlaying } from '../redux/actions';
+import { playSong, togglePlaying, deleteSong, setActiveSong } from '../redux/actions';
+import { AiFillDelete } from 'react-icons/ai'
 import useGetSongDetails from '../utils/useGetSongDetails'
 
 
 const Song = ({ song, songIndex }) => {
   const { songDetails } = useGetSongDetails(song);
+
   const { songId: currentSongId } = useSelector(state => state.player)
+  const { songs } = useSelector(state => state)
+  const { playing } = useSelector(state => state.player);
+
   const dispatch = useDispatch();
+
   const handleClick = (songId) => {
     dispatch(playSong(songId))
   }
+
+  const handlePlayNext = (songId) => {
+    if (songId !== undefined) {
+      dispatch(playSong((songId + 1) % songs.length))
+    }
+  }
+
+  const changeActiveSong = (songId) => {
+    if (songId !== undefined) {
+      setActiveSong(playSong((songId + 1) % songs.length))
+    }
+  }
+
+  const handleDelete = (e, songId) => {
+    if (playing) {
+      handlePlayNext(songId);
+    }else{
+      changeActiveSong(songId)
+    }
+    e.stopPropagation();
+    dispatch(deleteSong(songId))
+  }
+
   return (
     <div className={`music-player__song ${songIndex === currentSongId ? 'music-player__song--active' : ''}`} style={{ transitionDelay: '0s' }} onClick={() => handleClick(songIndex)}>
       <div className="song__details">
@@ -31,6 +60,9 @@ const Song = ({ song, songIndex }) => {
         </div>
         <div className="song__details--right">
           <p>{songDetails?.duration}</p>
+          <div onClick={(e) => handleDelete(e, songIndex)}>
+            <AiFillDelete size={22} />
+          </div>
         </div>
       </div>
     </div>

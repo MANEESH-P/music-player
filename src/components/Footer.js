@@ -41,9 +41,9 @@ const Footer = ({ audioPlayer, currentTime }) => {
   }
 
   const handleRepeat = () => {
-    if(repeat){
+    if (repeat) {
       dispatch(repeatSong(0));
-    }else{
+    } else {
       dispatch(repeatSong(1));
     }
   }
@@ -52,8 +52,17 @@ const Footer = ({ audioPlayer, currentTime }) => {
     dispatch(playSong(Math.floor(Math.random() * (songs.length))))
   }
 
+  const changeProgress =  () => {
+    const progressBar = document.getElementById('slider');
+    if (audioPlayer) {
+      audioPlayer.currentTime = progressBar.value;
+    }
+  };
+
   useEffect(() => {
     let popup = document.getElementById('popup');
+    const progressBar = document.getElementById('slider');
+    progressBar.value = 0;
     popup.addEventListener('click', function () {
       let songContainer = document.getElementById('songs-container');
       songContainer.classList.toggle('overlay')
@@ -75,10 +84,6 @@ const Footer = ({ audioPlayer, currentTime }) => {
             <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 0 24 24" width="100px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none" /><path d="M12 3l.01 10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4.01 4S14 19.21 14 17V7h4V3h-6zm-1.99 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" /></svg>
           } */}
         </div>
-        {/* <div className="song__actions">
-          <i className="fas fa-random"></i>
-          <i className="fas fa-redo"></i>
-        </div> */}
         <div className="song-details__meta">
           <h4>{noSongsAdded ? 'No song added' : songs[songId]?.name}</h4>
           <p>{songDetails.artist ? songDetails.artist : 'Unknown Artist'}</p>
@@ -112,7 +117,19 @@ const Footer = ({ audioPlayer, currentTime }) => {
           </div>
         </div>
         <div className="song__progress">
-          <progress id="progress" value={0} max={100} />
+          {/* <progress id="progress" value={0} max={100} /> */}
+          <input
+            id='slider'
+            type='range'
+            name='rng'
+            min='0'
+            step='0.1'
+            onChange={changeProgress}
+            onMouseDown={() => playing && dispatch(togglePlaying())}
+            onMouseUp={() => dispatch(togglePlaying())}
+            onTouchStart={() => playing && dispatch(togglePlaying())}
+            onTouchEnd={() =>  dispatch(togglePlaying())}
+          ></input>
         </div>
       </div>
       {

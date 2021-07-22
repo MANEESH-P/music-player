@@ -55,8 +55,6 @@ const Song = ({ song, songIndex }) => {
     e.stopPropagation();
   }
 
-  console.log(audioPlayer);
-
   return (
     <div className={`music-player__song ${songIndex === currentSongId ? 'music-player__song--active' : ''}`} style={{ transitionDelay: `${songIndex * 0.075}s` }} onClick={() => handleClick(songIndex)}>
       <div className="song__details">

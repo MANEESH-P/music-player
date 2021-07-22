@@ -17,36 +17,37 @@ const addNewSong = async (id) => {
     album: album ?? 'Unknown',
     year: year,
     artwork: [{
-      src: picture,
-      sizes: '96x96',
+      src: 'icons/logo-16.png',
+      sizes: '16x16',
       type: 'image/png',
     },
     {
-      src: picture,
+      src: 'icons/logo-24.png',
+      sizes: '24x24',
+      type: 'image/png',
+    },
+    {
+      src: 'icons/logo-32.png',
+      sizes: '32x32',
+      type: 'image/png',
+    },
+    {
+      src: 'icons/logo-64.png',
+      sizes: '64x64',
+      type: 'image/png',
+    },
+    {
+      src: 'icons/logo-128.png',
       sizes: '128x128',
       type: 'image/png',
     },
     {
-      src: picture,
-      sizes: '144x144',
-      type: 'image/png',
-    }, {
-      src: picture,
-      sizes: '192x192',
-      type: 'image/png',
-    },
-    {
-      src: picture,
+      src: 'icons/logo-256.png',
       sizes: '256x256',
       type: 'image/png',
     },
     {
-      src: picture,
-      sizes: '384x384',
-      type: 'image/png',
-    },
-    {
-      src: picture,
+      src: 'icons/logo-512.png',
       sizes: '512x512',
       type: 'image/png',
     }],

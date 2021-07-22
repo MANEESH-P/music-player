@@ -63,10 +63,18 @@ const Home = () => {
 
   const updateProgress = () => {
     var aud = document.getElementById('player');
-    var progressBar = document.getElementById('progress');
+    var progressBar = document.getElementById('slider');
     if (aud.currentTime && aud.duration) {
-      progressBar.value = (aud.currentTime / aud.duration) * 100;
+      progressBar.value = aud.currentTime;
       setCurrentTime(getTime(aud.currentTime))
+    }
+  };
+
+  const initialiseProgressBar = () => {
+    var aud = document.getElementById('player');
+    var progressBar = document.getElementById('slider');
+    if (aud.duration) {
+      progressBar.max = aud.duration;
     }
   };
 
@@ -109,7 +117,7 @@ const Home = () => {
         id='player'
         onEnded={songEnded}
         ref={audioPlayer}
-        // onLoadedMetadata={mDur}
+        onLoadedMetadata={initialiseProgressBar}
         onTimeUpdate={updateProgress}
       >
         <track kind='captions' {...{}} />

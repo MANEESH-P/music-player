@@ -29,13 +29,13 @@ const Visualizer = ({
 
     src.connect(analyser);
     src.connect(context.destination);
-    
+
 
     canvas.setAttribute('height', 500);
     canvas.setAttribute('width', 600);
 
     let WIDTH = canvas.width;
-    let HEIGHT = canvas.height;    
+    let HEIGHT = canvas.height;
 
     let bufferLength = analyser.frequencyBinCount;
     let dataArray = new Uint8Array(bufferLength);
@@ -45,7 +45,7 @@ const Visualizer = ({
     let barWidth = (WIDTH / bufferLength) * 2.5;
     let barHeight;
     let x = 0;
-    
+
     const color = () => {
       var c = () => Math.random() * 255;
 
@@ -69,13 +69,12 @@ const Visualizer = ({
       x = 0;
       analyser.getByteFrequencyData(dataArray);
 
-      ctx.fillStyle = '#4e3561';
+      ctx.fillStyle = '#2e3237';
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
-      
+
       for (let i = 25; i < bufferLength; i++) {
         barHeight = dataArray[i];
-
-        ctx.fillStyle = "#3b1f50";
+        ctx.fillStyle = '#8d99a7';
         ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
         x += barWidth + 1;
       }

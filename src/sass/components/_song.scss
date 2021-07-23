@@ -22,7 +22,7 @@
     &--left {
       display: flex;
       align-items: center;
-      max-width: 85%;
+      max-width: calc(100% - 60px);
       z-index:2;
     }
     &--right {

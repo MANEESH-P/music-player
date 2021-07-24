@@ -75,7 +75,9 @@ const NowPlaying = ({ audioPlayer, currentTime }) => {
     var aud = document.getElementById('player');
     if (aud.duration) {
       progressBar.max = aud.duration;
-      console.log(aud.duration)
+    }
+    if (aud.currentTime) {
+      progressBar.value = aud.currentTime;
     }
     // popup.addEventListener('click', function () {
     //   let songContainer = document.getElementById('songs-container');

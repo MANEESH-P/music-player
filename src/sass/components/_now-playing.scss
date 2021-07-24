@@ -76,10 +76,11 @@
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+          line-height:1.2;
         }
       }
       .song-details__meta--song-artist {
-        width: calc(100% - 90px);
+        width: calc(100% - 50px);
         margin-top: 8px;
         p {
           font-size: 14px;
@@ -90,6 +91,7 @@
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+          line-height:1.2;
         }
       }
     }

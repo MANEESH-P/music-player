@@ -14,7 +14,7 @@
   // border-top: 1px solid #454f59;
   transition: 0.2s ease-in;
   box-shadow: 0 0rem 1rem rgba(43, 0, 99, 0.4);
-  padding: 24px;
+  padding: 16px 16px 24px 16px;
   &.music-player__footer--hidden {
     transform: translateY(120%);
   }

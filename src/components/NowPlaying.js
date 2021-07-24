@@ -146,12 +146,16 @@ const NowPlaying = ({ audioPlayer, currentTime }) => {
           <AiFillBackward size={28} onClick={() => handlePlayPrev()}></AiFillBackward>
         </div>
         {playing ?
-          <div className="song-controls__icon song-controls__icon--pause" onClick={() => handlePause()}>
-            <GrPauseFill size={28} ></GrPauseFill>
+          <div className="song-controls__icon song-controls__icon--wrapper song-controls__icon--pause" onClick={() => handlePause()}>
+            <div className="song-controls__icon--svg">
+              <GrPauseFill size={28} ></GrPauseFill>
+            </div>
           </div>
           :
-          <div className="song-controls__icon song-controls__icon--play" onClick={() => handlePlay()}>
-            <GrPlayFill size={28} ></GrPlayFill>
+          <div className="song-controls__icon song-controls__icon--wrapper song-controls__icon--play" onClick={() => handlePlay()}>
+            <div className="song-controls__icon--svg">
+              <GrPlayFill size={28} ></GrPlayFill>
+            </div>
           </div>
         }
         <div className="song-controls__icon song-controls__icon--skip-forward">

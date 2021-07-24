@@ -4,6 +4,7 @@ import useGetSongDetails from "../utils/useGetSongDetails"
 import { playSong, togglePlaying, setNowPlayingView } from "../redux/actions"
 import { BsFillSkipForwardFill } from 'react-icons/bs';
 import { FaPlay, FaPause } from 'react-icons/fa';
+import { GrPlayFill, GrPauseFill } from 'react-icons/gr';
 
 const Footer = ({ audioPlayer, currentTime }) => {
   const [footerExpanded, setFooterExpanded] = useState(false);
@@ -63,13 +64,23 @@ const Footer = ({ audioPlayer, currentTime }) => {
           <h4>{noSongsAdded ? 'No song added' : songs[songId]?.name}</h4>
           <p>{songDetails.artist ? songDetails.artist : 'Unknown Artist'}</p>
         </div>
-        <div className="song-details__right song__controls">
+        <div className="song-details__right song-controls">
           {playing ?
-            <FaPause size={28} onClick={() => handlePause()}></FaPause>
+            <div className="song-controls__icon song-controls__icon--wrapper song-controls__icon--pause" onClick={() => handlePause()}>
+              <div className="song-controls__icon--svg">
+                <GrPauseFill size={28} ></GrPauseFill>
+              </div>
+            </div>
             :
-            <FaPlay size={28} onClick={() => handlePlay()}></FaPlay>
+            <div className="song-controls__icon song-controls__icon--wrapper song-controls__icon--play" onClick={() => handlePlay()}>
+              <div className="song-controls__icon--svg">
+                <GrPlayFill size={28} ></GrPlayFill>
+              </div>
+            </div>
           }
-          <BsFillSkipForwardFill size={28} onClick={() => handlePlayNext()}></BsFillSkipForwardFill>
+          {/* <div className="song-controls__icon" onClick={() => handlePlayNext()}>
+            <BsFillSkipForwardFill size={28} ></BsFillSkipForwardFill>
+          </div> */}
         </div>
       </div>
       {/* <div className="footer__drawer-icon" id="popup"

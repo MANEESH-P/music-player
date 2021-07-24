@@ -15,7 +15,7 @@
   box-shadow: 0 0rem 1rem rgba(43, 0, 99, 0.4);
   padding: 84px 24px 64px 24px;
   position: relative;
-  animation: slideinFromLeft .5s var(--transition) 1;
+  animation: slideinFromLeft 0.5s var(--transition) 1;
   .background-gradient {
     position: absolute;
     top: 0;
@@ -30,7 +30,7 @@
       margin: -5px -10px -10px -5px;
     }
   }
-  .back-button{
+  .back-button {
     position: absolute;
     top: 32px;
     left: 24px;
@@ -41,7 +41,8 @@
     .song-details__cover {
       transform: scale(1);
       width: 100%;
-      height: 320px;
+      height: 65%;
+      max-height: 320px;
       overflow: hidden;
       display: flex;
       align-items: flex-end;
@@ -53,8 +54,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      img{
-        max-width:100%;
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
       }
     }
     .song-details__meta {
@@ -112,34 +115,73 @@
     align-items: center;
     .song-controls__icon {
       cursor: pointer;
+      &--svg {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: var(--bg-color--primary);
+      }
       &--play,
       &--pause {
-        background: white;
+        background: var(--bg-color--primary);
         width: 64px;
         height: 64px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-        svg {
-          fill: black;
+        position: relative;
+        svg,
+        path {
+          stroke: white;
         }
       }
       &--play {
         svg {
-          margin-left: 5px;
+          margin-left: 3px;
+        }
+      }
+      &--wrapper {
+        background: -webkit-linear-gradient(90deg, #f27121, #e94057, #8a2387, #f27121); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(90deg, #f27121, #e94057, #8a2387, #f27121);
+        background-size: 400%;
+        &:before {
+          content: "";
+          position: absolute;
+          top: -5px;
+          left: -5px;
+          right: -5px;
+          bottom: -5px;
+          border-radius: 50%;
+          z-index: -1;
+          transition: 0.3s;
+          background: -webkit-linear-gradient(90deg, #f27121, #e94057, #8a2387, #f27121); /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(90deg, #f27121, #e94057, #8a2387, #f27121);
+          background-size: 400%;
+          animation: animatedGradient 8s infinite;
+        }
+        &:hover:before {
+          top: -12px;
+          left: -12px;
+          right: -12px;
+          bottom: -12px;
+          filter: blur(8px);
+          -webkit-filter: blur(8px);
         }
       }
     }
   }
-  .music-player__visualizer{
+  .music-player__visualizer {
     position: absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    height:50%;
-    z-index:-1;
-    opacity: 0.4;;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: -2;
+    opacity: 0.4;
   }
 }
 
@@ -150,6 +192,15 @@
 
   100% {
     transform: translateX(0);
+  }
+}
+
+@keyframes animatedGradient {
+  0% {
+    background-position: 400%;
+  }
+  100% {
+    background-position: 0%;
   }
 }
 
@@ -235,4 +286,3 @@ input[type="range"]:focus::-ms-fill-lower {
 input[type="range"]:focus::-ms-fill-upper {
   background: var(--bg-color--tertiary);
 }
-

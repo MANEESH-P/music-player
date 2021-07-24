@@ -99,7 +99,11 @@ const NowPlaying = ({ audioPlayer, currentTime }) => {
         <FiChevronLeft size={22} />
       </div>
       <div className="song-details">
-        <div className="song-details__cover" style={{ backgroundImage: `url('${songDetails?.url || defaultBackground}')`, backgroundPosition: 'center', backgroundSize: 'cover' }} >
+        <div
+          className="song-details__cover"
+        // style={{ backgroundImage: `url('${songDetails?.url || defaultBackground}')`, backgroundPosition: 'center', backgroundSize: 'cover' }}
+        >
+          <img src={songDetails?.url || defaultBackground} alt="" />
         </div>
         <div className="song-details__meta">
           <div className="song-details__meta--song-name">
@@ -161,7 +165,7 @@ const NowPlaying = ({ audioPlayer, currentTime }) => {
           }
         </div>
       </div>
-      {/* <Visualizer playing={playing} audioPlayer={audioPlayer} /> */}
+      <Visualizer playing={playing} audioPlayer={audioPlayer} />
     </div>
   )
 }

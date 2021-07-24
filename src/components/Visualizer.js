@@ -69,7 +69,7 @@ const Visualizer = ({
       x = 0;
       analyser.getByteFrequencyData(dataArray);
 
-      ctx.fillStyle = '#2e3237';
+      ctx.fillStyle = '#000000';
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
       for (let i = 25; i < bufferLength; i++) {
@@ -107,7 +107,7 @@ const Visualizer = ({
 
   return (
     <canvas
-      className="footer__visualiser"
+      className="music-player__visualizer"
       ref={canvasRef}
     ></canvas>
   );

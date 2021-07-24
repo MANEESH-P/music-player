@@ -54,7 +54,12 @@ const Footer = ({ audioPlayer, currentTime }) => {
   return (
     <div className={`music-player__footer ${nowPlayingView ? 'music-player__footer--hidden' : ''}`} id="footer">
       <div className="song-details--wrapper">
-        <div className="song-details__left song-details__meta">
+        <div
+          className="song-details__left song-details__meta"
+          onClick={() => {
+            dispatch(setNowPlayingView(true))
+            setFooterExpanded(!footerExpanded)
+          }}>
           <h4>{noSongsAdded ? 'No song added' : songs[songId]?.name}</h4>
           <p>{songDetails.artist ? songDetails.artist : 'Unknown Artist'}</p>
         </div>
@@ -67,13 +72,10 @@ const Footer = ({ audioPlayer, currentTime }) => {
           <BsFillSkipForwardFill size={28} onClick={() => handlePlayNext()}></BsFillSkipForwardFill>
         </div>
       </div>
-      <div className="footer__drawer-icon" id="popup" onClick={() => {
-        dispatch(setNowPlayingView(true))
-        setFooterExpanded(!footerExpanded)
-      }}
+      {/* <div className="footer__drawer-icon" id="popup"
       >
         <i className="fas fa-angle-up"></i>
-      </div>
+      </div> */}
       {/* <div className="song__progress">
         <progress id="progress" value={0} max={100} />
         <input

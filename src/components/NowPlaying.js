@@ -72,6 +72,11 @@ const NowPlaying = ({ audioPlayer, currentTime }) => {
     // let popup = document.getElementById('popup');
     const progressBar = document.getElementById('slider');
     progressBar.value = 0;
+    var aud = document.getElementById('player');
+    if (aud.duration) {
+      progressBar.max = aud.duration;
+      console.log(aud.duration)
+    }
     // popup.addEventListener('click', function () {
     //   let songContainer = document.getElementById('songs-container');
     //   songContainer.classList.toggle('overlay')
@@ -112,7 +117,7 @@ const NowPlaying = ({ audioPlayer, currentTime }) => {
             type='range'
             name='rng'
             min='0'
-            step='0.1'
+            step='0.01'
             onChange={changeProgress}
             onMouseDown={() => playing && dispatch(togglePlaying())}
             onMouseUp={() => dispatch(togglePlaying())}

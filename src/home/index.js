@@ -68,6 +68,7 @@ const Home = () => {
     var progressBar = document.getElementById('slider');
     if (aud.currentTime && aud.duration && nowPlayingView) {
       progressBar.value = aud.currentTime;
+      // console.log(aud.currentTime);
       setCurrentTime(getTime(aud.currentTime))
     }
   };
@@ -77,6 +78,7 @@ const Home = () => {
     var progressBar = document.getElementById('slider');
     if (aud.duration && nowPlayingView) {
       progressBar.max = aud.duration;
+      console.log(aud.duration)
     }
   };
 

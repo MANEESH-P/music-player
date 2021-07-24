@@ -2,11 +2,12 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import Song from './Song';
 
-const SongList = ({audioPlayer}) => {
-  const songs = useSelector(state => state.songs);
+const SongList = ({ audioPlayer }) => {
+  const { songs } = useSelector(state => state);
+  const { nowPlayingView } = useSelector(state => state.player)
   const noSongsAdded = songs?.length === 0;
   return (
-    <div className="music-player__song-list" id=
+    <div className={`music-player__song-list ${nowPlayingView ? 'overlay' : ''}`} id=
       "songs-container">
       {noSongsAdded ?
         <div className="music-player__song-list--no-songs">

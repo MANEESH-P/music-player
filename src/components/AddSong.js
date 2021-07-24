@@ -10,8 +10,8 @@ const AddSong = () => {
     dispatch(addSongs(e.currentTarget.files))
   }
   return (
-    <div className="add-song" id="headerButton">
-      <div className='add-song__button'>
+    <div className="music-player__add-song" id="headerButton">
+      <div className='music-player__add-song__button'>
         <input
           id='song-input'
           onChange={(e) => handleAddSongs(e)}

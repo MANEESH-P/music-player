@@ -88,11 +88,12 @@
   .song-details__cover-image {
     width: 45px;
     height: 45px;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.3s;
+    background-color:var(--bg-color--secondary)
   }
 
   &.music-player__song--active {

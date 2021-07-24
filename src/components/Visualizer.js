@@ -74,6 +74,10 @@ const Visualizer = ({
 
       for (let i = 25; i < bufferLength; i++) {
         barHeight = dataArray[i];
+        // let r = barHeight + (25 * (i/bufferLength));
+        // let g = 250 * (i/bufferLength);
+        // let b = 10;
+        // ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
         ctx.fillStyle = '#8d99a7';
         ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
         x += barWidth + 1;

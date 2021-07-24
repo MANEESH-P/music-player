@@ -7,6 +7,7 @@ export const PLAY_NEXT_SONG = 'PLAY_NEXT_SONG';
 export const PLAY_PREV_SONG = 'PLAY_PREV_SONG';
 export const REPEAT = 'REPEAT';
 export const SET_ACTIVE_SONG = 'SET_ACTIVE_SONG';
+export const SET_NOW_PLAYING_VIEW = 'SET_NOW_PLAYING_VIEW'
 
 export const fetchSongs = () => {
   return {
@@ -64,5 +65,12 @@ export const setActiveSong = (id) => {
   return {
     type:SET_ACTIVE_SONG,
     payload: id
+  }
+}
+
+export const setNowPlayingView = (nowPlaying) => {
+  return {
+    type: SET_NOW_PLAYING_VIEW,
+    payload: nowPlaying
   }
 }

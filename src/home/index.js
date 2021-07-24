@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SongList from "../components/SongList";
 import AddSong from '../components/AddSong';
+import NowPlaying from '../components/NowPlaying';
 
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
 
   const songs = useSelector(state => state.songs);
   const player = useSelector(state => state.player)
+  const { nowPlayingView } = useSelector(state => state.player)
 
   const dispatch = useDispatch();
 
@@ -64,7 +66,7 @@ const Home = () => {
   const updateProgress = () => {
     var aud = document.getElementById('player');
     var progressBar = document.getElementById('slider');
-    if (aud.currentTime && aud.duration) {
+    if (aud.currentTime && aud.duration && nowPlayingView) {
       progressBar.value = aud.currentTime;
       setCurrentTime(getTime(aud.currentTime))
     }
@@ -73,7 +75,7 @@ const Home = () => {
   const initialiseProgressBar = () => {
     var aud = document.getElementById('player');
     var progressBar = document.getElementById('slider');
-    if (aud.duration) {
+    if (aud.duration && nowPlayingView) {
       progressBar.max = aud.duration;
     }
   };
@@ -107,9 +109,17 @@ const Home = () => {
 
   return (
     <div className="music-player">
-      <Header />
-      <SongList audioPlayer={audioPlayer.current} />
-      <AddSong />
+      {!nowPlayingView ?
+        <>
+          <Header />
+          <SongList audioPlayer={audioPlayer.current} />
+          <AddSong />
+        </>
+        :
+        <>
+          <NowPlaying audioPlayer={audioPlayer.current} currentTime={currentTime} />
+        </>
+      }
       <Footer audioPlayer={audioPlayer.current} currentTime={currentTime} />
       <audio
         hidden

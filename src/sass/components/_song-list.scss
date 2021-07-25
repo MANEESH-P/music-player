@@ -7,6 +7,7 @@
   overflow: scroll;
   user-select: none;
   &.overlay {
+    display:none;
     .music-player__song {
       // transform: translate3d(0, 2rem, -2rem) scale(0.9);
       opacity: 0.5;

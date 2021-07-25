@@ -111,16 +111,15 @@ const Home = () => {
 
   return (
     <div className="music-player">
-      {!nowPlayingView ?
+      {!nowPlayingView &&
         <>
           <Header />
-          <SongList audioPlayer={audioPlayer.current} />
           <AddSong />
         </>
-        :
-        <>
-          <NowPlaying audioPlayer={audioPlayer.current} currentTime={currentTime} />
-        </>
+      }
+      <SongList audioPlayer={audioPlayer.current} />
+      {nowPlayingView &&
+        <NowPlaying audioPlayer={audioPlayer.current} currentTime={currentTime} />
       }
       <Footer audioPlayer={audioPlayer.current} currentTime={currentTime} />
       <audio

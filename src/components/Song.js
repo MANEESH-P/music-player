@@ -56,7 +56,7 @@ const Song = ({ song, songIndex }) => {
   }
 
   return (
-    <div className={`music-player__song ${songIndex === currentSongId ? 'music-player__song--active' : ''}`} style={{ transitionDelay: `${songIndex * 0.075}s` }} onClick={() => handleClick(songIndex)}>
+    <div className={`music-player__song ${songIndex === currentSongId ? 'music-player__song--active' : ''}`} style={{ transitionDelay: `${songIndex * 0}s` }} onClick={() => handleClick(songIndex)}>
       <div className="song__details">
         <div className="song__details--left">
           <div className="song-details__cover-image" style={{ backgroundImage: `url('${songDetails?.url}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>

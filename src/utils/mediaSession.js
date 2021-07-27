@@ -17,37 +17,37 @@ const addNewSong = async (id) => {
     album: album ?? 'Unknown',
     year: year,
     artwork: [{
-      src: 'icons/logo-16.png',
+      src: picture,
       sizes: '16x16',
       type: 'image/png',
     },
     {
-      src: 'icons/logo-24.png',
+      src: picture,
       sizes: '24x24',
       type: 'image/png',
     },
     {
-      src: 'icons/logo-32.png',
+      src: picture,
       sizes: '32x32',
       type: 'image/png',
     },
     {
-      src: 'icons/logo-64.png',
+      src: picture,
       sizes: '64x64',
       type: 'image/png',
     },
     {
-      src: 'icons/logo-128.png',
+      src: picture,
       sizes: '128x128',
       type: 'image/png',
     },
     {
-      src: 'icons/logo-256.png',
+      src: picture,
       sizes: '256x256',
       type: 'image/png',
     },
     {
-      src: 'icons/logo-512.png',
+      src: picture,
       sizes: '512x512',
       type: 'image/png',
     }],
@@ -73,13 +73,20 @@ const getPicture = (meta) => {
       meta.tags ?? {};
 
     if (data && format) {
-      let TYPED_ARRAY = new Uint8Array(data);
-      const STRING_CHAR = TYPED_ARRAY.reduce((data, byte) => {
-        return data + String.fromCharCode(byte);
-      }, '');
-      let base64String = btoa(STRING_CHAR);
-      let imgurl = `data:${format};base64,${base64String}`;
+      // let TYPED_ARRAY = new Uint8Array(data);
+      // const STRING_CHAR = TYPED_ARRAY.reduce((data, byte) => {
+      //   return data + String.fromCharCode(byte);
+      // }, '');
+      // let base64String = btoa(STRING_CHAR);
+      // let imgurl = `data:${format};base64,${base64String}`;
 
+      // return imgurl;
+
+      for (let i = 0; i < data.length; i++) {
+        base64String += String.fromCharCode(picture.data[i]);
+      }
+      let imgurl =
+        'data:' + format + ';base64,' + window.btoa(base64String);
       return imgurl;
     }
   }

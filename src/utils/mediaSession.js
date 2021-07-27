@@ -81,9 +81,9 @@ const getPicture = (meta) => {
       // let imgurl = `data:${format};base64,${base64String}`;
 
       // return imgurl;
-
+      let base64String = '';
       for (let i = 0; i < data.length; i++) {
-        base64String += String.fromCharCode(picture.data[i]);
+        base64String += String.fromCharCode(data[i]);
       }
       let imgurl =
         'data:' + format + ';base64,' + window.btoa(base64String);

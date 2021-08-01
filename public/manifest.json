@@ -1,6 +1,7 @@
 {
   "short_name": "Stellio",
   "name": "Music Player PWA",
+  "description": "Simple progressive web app to play your local music files",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,16 +9,42 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "icons/logo-16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "icons/logo-32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "icons/logo-64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "icons/logo-128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "icons/logo-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "icons/logo-256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "icons/logo-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
+  "scope": "/",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#1f2123",

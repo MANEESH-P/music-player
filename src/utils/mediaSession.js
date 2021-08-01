@@ -115,6 +115,16 @@ const addActionListeners = () => {
 };
 if (mediaSessionEnabled) addActionListeners();
 
+const updateSongProgress = (audioPlayer) => {
+  if (mediaSessionEnabled) {
+    navigator.mediaSession.setPositionState({
+      duration: audioPlayer.duration,
+      position: audioPlayer.currentTime,
+      playbackRate: audioPlayer.playbackRate,
+    });
+  }
+}
+
 export default {
   setStore(s) {
     store = s;
@@ -124,4 +134,5 @@ export default {
       addNewSong(song);
     }
   },
+  updateSongProgress
 };

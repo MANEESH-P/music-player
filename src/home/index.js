@@ -73,6 +73,7 @@ const Home = () => {
       progressBar.value = aud.currentTime;
       // console.log(aud.currentTime);
       setCurrentTime(getTime(aud.currentTime))
+      mediaSession.updateSongProgress(aud);
     }
   };
 

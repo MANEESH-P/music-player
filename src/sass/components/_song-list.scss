@@ -38,6 +38,9 @@
       font-size: 16px;
     }
   }
+  .music-player__song-list--no-songs{
+    color:var(--text-color--primary)
+  }
 }
 
 @keyframes slideinFromRight {

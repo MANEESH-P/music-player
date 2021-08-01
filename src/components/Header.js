@@ -25,7 +25,7 @@ const Header = () => {
         </div>
         <div className="music-player__header--right">
           <div onClick={() => handleThemeChange()}>
-            {theme ?
+            {theme === 'dark' ?
               <FiSun size={24} /> :
               <FiMoon size={22} />
             }

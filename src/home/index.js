@@ -56,7 +56,7 @@ const Home = () => {
       }
       // Start playing
     } else {
-      await play(player.songId);
+      play(player.songId);
       mediaSession.addNewSong(player.songId);
 
     }

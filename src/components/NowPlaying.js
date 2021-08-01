@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import useGetSongDetails from "../utils/useGetSongDetails"
+import vibrateHelper from '../utils/vibrate';
 import { playSong, togglePlaying, repeatSong, setNowPlayingView } from "../redux/actions"
 import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
 import { RiShuffleFill, RiRepeat2Fill, RiRepeatOneFill } from 'react-icons/ri';
@@ -27,14 +28,17 @@ const NowPlaying = ({ audioPlayer, currentTime }) => {
     if (songId !== undefined) {
       dispatch(playSong(songId))
     }
+    vibrateHelper.vibrate(10);
   }
   const handlePause = () => {
-    dispatch(togglePlaying())
+    dispatch(togglePlaying());
+    vibrateHelper.vibrate(10);
   }
   const handlePlayNext = () => {
     if (songId !== undefined) {
       dispatch(playSong((songId + 1) % songs.length))
     }
+    vibrateHelper.vibrate(10);
   }
 
   const handlePlayPrev = () => {
@@ -43,6 +47,7 @@ const NowPlaying = ({ audioPlayer, currentTime }) => {
         ? (songId - 1) % songs.length
         : songs.length - 1)))
     }
+    vibrateHelper.vibrate(10);
   }
 
   const handleRepeat = () => {
@@ -51,10 +56,12 @@ const NowPlaying = ({ audioPlayer, currentTime }) => {
     } else {
       dispatch(repeatSong(1));
     }
+    vibrateHelper.vibrate(10);
   }
 
   const handleRandom = () => {
     dispatch(playSong(Math.floor(Math.random() * (songs.length))))
+    vibrateHelper.vibrate(10);
   }
 
   const changeProgress = () => {
@@ -69,7 +76,6 @@ const NowPlaying = ({ audioPlayer, currentTime }) => {
   }
 
   useEffect(() => {
-    // let popup = document.getElementById('popup');
     const progressBar = document.getElementById('slider');
     progressBar.value = 0;
     var aud = document.getElementById('player');
@@ -79,14 +85,6 @@ const NowPlaying = ({ audioPlayer, currentTime }) => {
     if (aud.currentTime) {
       progressBar.value = aud.currentTime;
     }
-    // popup.addEventListener('click', function () {
-    //   let songContainer = document.getElementById('songs-container');
-    //   songContainer.classList.toggle('overlay')
-    //   let footer = document.getElementById('footer');
-    //   footer.classList.toggle('expanded')
-    //   let headerButton = document.getElementById('headerButton');
-    //   headerButton.classList.toggle('hidden')
-    // })
   }, [])
 
   const noSongsAdded = songs.length === 0;

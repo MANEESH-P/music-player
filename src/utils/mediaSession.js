@@ -5,7 +5,7 @@ let store;
 const mediaSessionEnabled = ('mediaSession' in navigator);
 const addNewSong = async (id) => {
   const state = store.getState();
-  const meta = await getInfo(state.songs[id]);
+  const meta = await getMetadata(state.songs[id]);
 
   const { title, artist, album } = meta.tags ?? {};
   console.log(meta.tags);
@@ -65,38 +65,6 @@ const getMetadata = (song) =>
       },
     });
   });
-
-const getThumbnailUrl = (picture) => {
-  // create reference to track art
-  let base64String = '';
-  if (picture) {
-    for (let i = 0; i < picture.data.length; i++) {
-      base64String += String.fromCharCode(picture.data[i]);
-    }
-    let imageUri =
-      'data:' + picture.format + ';base64,' + window.btoa(base64String);
-    return imageUri;
-  }
-  return '';
-};
-
-const getInfo = async (song) => {
-  window.jsmediatags.read(song, {
-    onSuccess: function (tag) {
-      let tags = tag;
-      let { artist, album } = tags.tags;
-      let url = getThumbnailUrl(tags);
-      let songDetails = { artist, url, album };
-      return songDetails
-    },
-    onError: function (error) {
-      console.log(error);
-      return {};
-    },
-  });
-}
-
-
 
 
 const getPicture = (meta) => {

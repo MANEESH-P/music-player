@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { togglePlaying, playSong } from '../redux/actions';
+import mediaSession from '../utils/mediaSession';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SongList from "../components/SongList";
@@ -55,7 +56,9 @@ const Home = () => {
       }
       // Start playing
     } else {
-      play(player.songId);
+      await play(player.songId);
+      mediaSession.addNewSong(player.songId);
+
     }
   }, [player]);
 

@@ -7,7 +7,8 @@ export const PLAY_NEXT_SONG = 'PLAY_NEXT_SONG';
 export const PLAY_PREV_SONG = 'PLAY_PREV_SONG';
 export const REPEAT = 'REPEAT';
 export const SET_ACTIVE_SONG = 'SET_ACTIVE_SONG';
-export const SET_NOW_PLAYING_VIEW = 'SET_NOW_PLAYING_VIEW'
+export const SET_NOW_PLAYING_VIEW = 'SET_NOW_PLAYING_VIEW';
+export const SET_DARK_THEME = 'SET_DARK_THEME';
 
 export const fetchSongs = () => {
   return {
@@ -57,13 +58,13 @@ export const playPrevSong = () => {
 export const repeatSong = (repeat) => {
   return {
     type: REPEAT,
-    payload:repeat
+    payload: repeat
   };
 };
 
 export const setActiveSong = (id) => {
   return {
-    type:SET_ACTIVE_SONG,
+    type: SET_ACTIVE_SONG,
     payload: id
   }
 }
@@ -72,5 +73,12 @@ export const setNowPlayingView = (nowPlaying) => {
   return {
     type: SET_NOW_PLAYING_VIEW,
     payload: nowPlaying
+  }
+}
+
+export const setDarkTheme = (darkTheme) => {
+  return {
+    type: SET_DARK_THEME,
+    payload: darkTheme
   }
 }

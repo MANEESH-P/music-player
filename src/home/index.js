@@ -5,7 +5,6 @@ import mediaSession from '../utils/mediaSession';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SongList from "../components/SongList";
-import AddSong from '../components/AddSong';
 import NowPlaying from '../components/NowPlaying';
 
 
@@ -118,7 +117,6 @@ const Home = () => {
       {!nowPlayingView &&
         <>
           <Header />
-          <AddSong />
         </>
       }
       <SongList audioPlayer={audioPlayer.current} />

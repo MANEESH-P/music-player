@@ -4,10 +4,10 @@
   display: flex;
   align-items: center;
   position: relative;
-  background: var(--bg-color--primary);
+  background: var(--bg-color--screen);
   padding: 8px 16px;
   cursor: pointer;
-  transition: 0.3s ease-in;
+  // transition: 0.3s ease-in;
   .song__details {
     width: 100%;
     display: flex;
@@ -29,8 +29,9 @@
       display: flex;
       align-items: center;
       z-index: 2;
-      svg {
-        fill: white;
+      svg, path {
+        fill: var(--icon-color--secondary);
+        stroke: var(--icon-color--secondary);
         margin-left: 8px;
       }
       p {
@@ -46,7 +47,7 @@
       z-index: -1;
       width: 100%;
       height: 100%;
-      background-image: linear-gradient(to right, rgba(69, 79, 89, 1), rgba(69, 79, 89, 0.02));
+      background-image: linear-gradient(to right, var(--gradient-primary), var(--gradient-secondary));
       opacity: 0;
       transform: translateX(-100%);
       transition: 0.3s ease-out;
@@ -92,13 +93,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.3s;
+    // transition: 0.3s;
     background-color:var(--bg-color--secondary)
   }
 
   &.music-player__song--active {
     .song__details {
-      border: 1px solid rgba(69, 79, 89, 0.4);
+      border: 1px solid var(--gradient-primary);
       &:before {
         transform: translateX(0);
         opacity: 1;

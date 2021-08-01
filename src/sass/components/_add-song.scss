@@ -1,35 +1,30 @@
 .music-player__add-song {
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  top:3rem;
-  right:15px;
   cursor: pointer;  
   z-index: 3;
   .music-player__add-song__button {
-    width: 48px;
-    height: 48px;
+    width: 26px;
+    height: 26px;
     position: relative;
+    margin-left:24px;
     i{
       position: absolute;
       left:50%;
       top:50%;
       transform:translate(-50%,-50%);
       cursor: pointer;
+      color:var(--icon-color--white)
     } 
     transition:all 0.15s ease-in;  
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background: var(--icon-background-color);
-    box-shadow: 0 0.5rem 1rem rgba(88, 61, 145, 0.3);
-    color: var(--icon-color);
+    // background: var(--icon-background-color);
+    // box-shadow: 0 0.5rem 1rem rgba(88, 61, 145, 0.3);
     font-size:20px;
-    &:hover{
-      color:var(--icon-color);
-    }
     input{
       visibility: hidden;
     }

@@ -12,7 +12,7 @@
   will-change: transform;
   background: var(--bg-color--secondary);
   // border-top: 1px solid #454f59;
-  transition: 0.2s ease-in;
+  transition: transform 0.2s ease-in;
   box-shadow: 0 0rem 1rem rgba(43, 0, 99, 0.4);
   padding: 16px 24px 24px 24px;
   &.music-player__footer--hidden {
@@ -74,7 +74,7 @@
           // margin-right: 12px;
           svg,
           path {
-            stroke: white;
+            stroke: var(--icon-color);
           }
         }
         &--svg {
@@ -84,17 +84,23 @@
           justify-content: center;
           align-items: center;
           border-radius: 50%;
-          background: var(--bg-color--primary);
+          background: var(--bg-color--secondary);
         }
         &--wrapper {
           background: -webkit-linear-gradient(
             90deg,
-            #f27121,
-            #e94057,
-            #8a2387,
-            #f27121
+            var(--animation-gradient-color-1),
+            var(--animation-gradient-color-2),
+            var(--animation-gradient-color-3),
+            var(--animation-gradient-color-1)
           );
-          background: linear-gradient(90deg, #f27121, #e94057, #8a2387, #f27121);
+          background: linear-gradient(
+            90deg,
+            var(--animation-gradient-color-1),
+            var(--animation-gradient-color-2),
+            var(--animation-gradient-color-3),
+            var(--animation-gradient-color-1)
+          );
           background-size: 400%;
           &:before {
             content: "";
@@ -108,12 +114,18 @@
             transition: 0.3s;
             background: -webkit-linear-gradient(
               90deg,
-              #f27121,
-              #e94057,
-              #8a2387,
-              #f27121
-            ); /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(90deg, #f27121, #e94057, #8a2387, #f27121);
+              var(--animation-gradient-color-1),
+              var(--animation-gradient-color-2),
+              var(--animation-gradient-color-3),
+              var(--animation-gradient-color-1)
+            );
+            background: linear-gradient(
+              90deg,
+              var(--animation-gradient-color-1),
+              var(--animation-gradient-color-2),
+              var(--animation-gradient-color-3),
+              var(--animation-gradient-color-1)
+            );
             background-size: 400%;
             animation: animatedGradient 8s infinite;
           }
@@ -128,14 +140,14 @@
         }
       }
       svg {
-        color: currentColor;
+        color: var(--icon-color);
         transition: 0.15s ease-in;
         height: 18px;
         width: 18px;
         cursor: pointer;
       }
       path {
-        stroke: currentColor;
+        stroke: var(--icon-color);
       }
     }
   }
@@ -154,17 +166,6 @@
     cursor: pointer;
     transition: 0.15s ease-in;
     border-radius: 50%;
-    i {
-      font-size: 1.3rem;
-      padding-top: 2px;
-      padding-left: 1px;
-      color: var(--icon-color);
-    }
-    &:hover {
-      i {
-        color: var(--icon-color);
-      }
-    }
   }
 
   .song__progress {

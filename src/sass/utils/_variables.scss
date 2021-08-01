@@ -1,33 +1,52 @@
-
 .light {
-  --bg-color--primary: #2880b9;
-  --bg-color--secondary: #bbddee;
+  --bg-color--secondary: #2880b9;
+  --bg-color--primary: #bbddee;
+  --bg-color--tertiary: #bbddee;
+  --bg-color--screen: #ffffff;
+  --bg-color--dark: #2880b9;
+  --text-color--active: #8d99a7;
+  --text-color--primary: #000000;
+  --text-color--secondary: #504f4f;
+  --text-color--white: #ffffff;
+  --border-color: rgba(14,96,150,0.22);
+  --border-color--active: #8d99a7;
+  --icon-color: rgba(255, 255, 255, 0.7);
+  --icon-color--secondary: #2880b9;
+  --icon-color--dark: #2880b9;
+  --icon-background-color: #ffffff;
+  --icon-background-color-2: #2880b9;
+  --gradient-primary: rgba(40, 128, 185, 0.3);
+  --gradient-secondary: rgba(40, 128, 185, 0.02);
+  --animation-gradient-color-1: #f27121;
+  --animation-gradient-color-2: #e94057;
+  --animation-gradient-color-3: #8a2387;
 }
 .dark {
-  --bg-color--primary: #202020;
   --bg-color--primary: #000000;
   --bg-color--secondary: #1f2123;
-  // --bg-color--secondary: rgba(255,255,255,0.2);
   --bg-color--tertiary: #2e3237;
-  // --bg-color--tertiary: rgba(255,255,255,0.2);
+  --bg-color--screen: #000000;
+  --bg-color--dark: #000000;
   --accent-color: #d594ee;
-  --text-color--active:#8d99a7;
+  --text-color--active: #8d99a7;
   --text-color--primary: #ffffff;
   --text-color--secondary: #e5eaf0;
-  // --text-color--secondary: #ffffff;
-  --gradient-primary: rgba(213, 148, 238, 0.4);
-  // --gradient-primary: rgba(255, 255, 255, 0.4);
-
-  --gradient-seondary: rgba(213, 148, 238, 0.04);
-  // --gradient-seondary: rgba(255, 255, 255, 0.04);
-  --border-color:#454f59;
+  --text-color--white: #ffffff;
+  --gradient-primary: rgba(69, 79, 89, 1);
+  --gradient-secondary: rgba(69, 79, 89, 0.02);
+  --border-color: #454f59;
   --border-color--active: #8d99a7;
   --button-color: #d933c3;
   --button-color--secondary: rgba(217, 51, 195, 0.6);
-  --icon-background-color:#ffffff;
-  --icon-color:#3b1f50;
+  --icon-color: #ffffff;
+  --icon-color--dark: #000000;
+  --icon-color--secondary: #ffffff;
+  --icon-background-color: #ffffff;
+  --icon-background-color-2: #000000;
+  --animation-gradient-color-1: #f27121;
+  --animation-gradient-color-2: #e94057;
+  --animation-gradient-color-3: #8a2387;
 }
-
 
 :root {
   --transition: cubic-bezier(0.62, 0.44, 0, 1);

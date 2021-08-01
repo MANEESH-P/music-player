@@ -1,4 +1,5 @@
 import { useRef, useLayoutEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 let animationFrameRequestId;
 let context;
@@ -8,6 +9,8 @@ const Visualizer = ({
   audioPlayer,
   playing,
 }) => {
+
+  const { darkTheme } = useSelector(state => state.theme)
 
   const canvasRef = useRef(null);
 
@@ -69,7 +72,8 @@ const Visualizer = ({
       x = 0;
       analyser.getByteFrequencyData(dataArray);
 
-      ctx.fillStyle = '#000000';
+      // ctx.fillStyle = '#2880b9';
+      ctx.fillStyle = darkTheme ? '#000000' : '#2880b9';
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
       for (let i = 25; i < bufferLength; i++) {
@@ -78,7 +82,7 @@ const Visualizer = ({
         // let g = 250 * (i/bufferLength);
         // let b = 10;
         // ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-        ctx.fillStyle = '#8d99a7';
+        ctx.fillStyle = darkTheme ? '#8d99a7' : '#bbdeee';
         ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
         x += barWidth + 1;
       }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch } from 'react-redux'
 import { addSongs } from "../redux/actions"
 
@@ -20,7 +21,7 @@ const AddSong = () => {
           accept='audio/mp3'
         />
         <label htmlFor="song-input">
-          <i className="fas fa-plus"></i>
+          <AiOutlinePlus size={24}/>
         </label>
       </div>
     </div>

@@ -6,11 +6,9 @@
   flex-direction: column;
   justify-content: space-between;
   color: white;
-  border-radius: 1rem 1rem 0 0;
   box-sizing: border-box;
   will-change: transform;
-  background: var(--bg-color--tertiary);
-  background: black;
+  background: var(--bg-color--dark);
   transition: 0.45s;
   box-shadow: 0 0rem 1rem rgba(43, 0, 99, 0.4);
   padding: 84px 24px 64px 24px;
@@ -84,14 +82,14 @@
         margin-top: 8px;
         p {
           font-size: 14px;
-          color: var(--text-color--secondary);
+          color: var(--text-color--white);
           font-weight: 300;
           width: 100%;
           text-align: left;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
-          line-height:1.2;
+          line-height: 1.2;
         }
       }
     }
@@ -106,7 +104,7 @@
       margin-top: 12px;
       justify-content: space-between;
       p {
-        color: var(--text-color--secondary);
+        color: var(--text-color--white);
       }
     }
   }
@@ -125,7 +123,7 @@
         justify-content: center;
         align-items: center;
         border-radius: 50%;
-        background: var(--bg-color--primary);
+        background: var(--icon-background-color-2);
       }
       &--play,
       &--pause {
@@ -161,7 +159,13 @@
           border-radius: 50%;
           z-index: -1;
           transition: 0.3s;
-          background: -webkit-linear-gradient(90deg, #f27121, #e94057, #8a2387, #f27121); /* Chrome 10-25, Safari 5.1-6 */
+          background: -webkit-linear-gradient(
+            90deg,
+            #f27121,
+            #e94057,
+            #8a2387,
+            #f27121
+          ); /* Chrome 10-25, Safari 5.1-6 */
           background: linear-gradient(90deg, #f27121, #e94057, #8a2387, #f27121);
           background-size: 400%;
           animation: animatedGradient 8s infinite;
@@ -207,7 +211,7 @@
   }
 }
 
-//progress bar styles
+// progress bar styles
 
 input[type="range"] {
   -webkit-appearance: none;
@@ -289,3 +293,19 @@ input[type="range"]:focus::-ms-fill-lower {
 input[type="range"]:focus::-ms-fill-upper {
   background: var(--bg-color--tertiary);
 }
+
+// #slider {
+//   border-radius: 8px;
+//   height: 4px;
+//   width: 100%;
+//   outline: none;
+//   -webkit-appearance: none;
+// }
+
+// input[type='range']::-webkit-slider-thumb {
+//   width: 10px;
+//   -webkit-appearance: none;
+//   height: 18px;
+//   background: white;
+//   border-radius: 2px;
+// }

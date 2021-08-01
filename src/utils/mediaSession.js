@@ -83,7 +83,7 @@ const getPicture = (meta) => {
       return imgurl;
     }
   }
-  
+
   return img;
 };
 
@@ -91,8 +91,8 @@ const addActionListeners = () => {
   navigator.mediaSession.setActionHandler('previoustrack', () => {
     if (store) {
       const state = store.getState();
-      const prevId = state.playState.songId === 0
-        ? state.songs.length - 1 : state.playState.songId - 1;
+      const prevId = state.player.songId === 0
+        ? state.songs.length - 1 : state.player.songId - 1;
       store.dispatch(playSong(prevId));
     }
   });
@@ -100,7 +100,7 @@ const addActionListeners = () => {
   navigator.mediaSession.setActionHandler('nexttrack', () => {
     if (store) {
       const state = store.getState();
-      const nextId = (state.playState.songId + 1) % state.songs.length;
+      const nextId = (state.player.songId + 1) % state.songs.length;
       store.dispatch(playSong(nextId));
     }
   });

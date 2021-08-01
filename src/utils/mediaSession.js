@@ -73,24 +73,17 @@ const getPicture = (meta) => {
       meta.tags ?? {};
 
     if (data && format) {
-      // let TYPED_ARRAY = new Uint8Array(data);
-      // const STRING_CHAR = TYPED_ARRAY.reduce((data, byte) => {
-      //   return data + String.fromCharCode(byte);
-      // }, '');
-      // let base64String = btoa(STRING_CHAR);
-      // let imgurl = `data:${format};base64,${base64String}`;
+      let TYPED_ARRAY = new Uint8Array(data);
+      const STRING_CHAR = TYPED_ARRAY.reduce((data, byte) => {
+        return data + String.fromCharCode(byte);
+      }, '');
+      let base64String = btoa(STRING_CHAR);
+      let imgurl = `data:${format};base64,${base64String}`;
 
-      // return imgurl;
-      let base64String = '';
-      for (let i = 0; i < data.length; i++) {
-        base64String += String.fromCharCode(data[i]);
-      }
-      let imgurl =
-        'data:' + format + ';base64,' + window.btoa(base64String);
       return imgurl;
     }
   }
-
+  
   return img;
 };
 

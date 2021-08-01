@@ -14,7 +14,7 @@ function App() {
   // const [localTheme, setLocalTheme] = useState('');
 
   // const dispatch = useDispatch();
-  // const { theme:reduxTheme } = useSelector(state => state.theme)
+  const { theme } = useSelector(state => state.theme)
 
   // useEffect(() => {
   //   localForage.getItem('theme').then((theme) => {
@@ -33,7 +33,7 @@ function App() {
   // }, [reduxTheme])
 
   return (
-    <div className={`container dark`}>
+    <div className={`container ${theme}`}>
       <Home />
     </div>
   );

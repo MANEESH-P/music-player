@@ -14,9 +14,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const handleThemeChange = () => {
-    localForage.setItem('theme', theme === 'dark' ? 'light' : 'dark').then(() => {
-      dispatch(setDarkTheme(theme === 'dark' ? 'light' : 'dark'))
-    });
+    dispatch(setDarkTheme(theme === 'dark' ? 'light' : 'dark'))
   }
 
   return (
@@ -26,12 +24,12 @@ const Header = () => {
           <h3>Your Songs</h3>
         </div>
         <div className="music-player__header--right">
-          {/* <div onClick={() => handleThemeChange()}>
+          <div onClick={() => handleThemeChange()}>
             {theme ?
               <FiSun size={24} /> :
               <FiMoon size={22} />
             }
-          </div> */}
+          </div>
           <AddSong />
         </div>
       </div>

@@ -10,7 +10,7 @@ const Visualizer = ({
   playing,
 }) => {
 
-  const { darkTheme } = useSelector(state => state.theme)
+  const { theme } = useSelector(state => state.theme)
 
   const canvasRef = useRef(null);
 
@@ -73,7 +73,7 @@ const Visualizer = ({
       analyser.getByteFrequencyData(dataArray);
 
       // ctx.fillStyle = '#2880b9';
-      ctx.fillStyle = true ? '#000000' : '#2880b9';
+      ctx.fillStyle = theme === 'dark' ? '#000000' : '#2880b9';
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
       for (let i = 25; i < bufferLength; i++) {
@@ -82,7 +82,7 @@ const Visualizer = ({
         // let g = 250 * (i/bufferLength);
         // let b = 10;
         // ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-        ctx.fillStyle = true ? '#8d99a7' : '#bbdeee';
+        ctx.fillStyle = theme === 'dark' ? '#8d99a7' : '#bbdeee';
         ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
         x += barWidth + 1;
       }

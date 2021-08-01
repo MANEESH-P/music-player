@@ -11,29 +11,29 @@ import { setDarkTheme } from "../src/redux/actions"
 
 function App() {
 
-  const [localTheme, setLocalTheme] = useState('');
+  // const [localTheme, setLocalTheme] = useState('');
 
-  const dispatch = useDispatch();
-  const { theme:reduxTheme } = useSelector(state => state.theme)
+  // const dispatch = useDispatch();
+  // const { theme:reduxTheme } = useSelector(state => state.theme)
 
-  useEffect(() => {
-    localForage.getItem('theme').then((theme) => {
-      console.log(theme, reduxTheme)
-      if(theme !== reduxTheme){
-        setLocalTheme(theme);
-        dispatch(setDarkTheme(theme));
-      }else{
-        setLocalTheme(reduxTheme)
-      }
-    }) 
-  }, [])
+  // useEffect(() => {
+  //   localForage.getItem('theme').then((theme) => {
+  //     console.log(theme, reduxTheme)
+  //     if(theme !== reduxTheme){
+  //       setLocalTheme(theme);
+  //       dispatch(setDarkTheme(theme));
+  //     }else{
+  //       setLocalTheme(reduxTheme)
+  //     }
+  //   }) 
+  // }, [])
 
-  useEffect(() => {
-    setLocalTheme(reduxTheme);
-  }, [reduxTheme])
+  // useEffect(() => {
+  //   setLocalTheme(reduxTheme);
+  // }, [reduxTheme])
 
   return (
-    <div className={`container ${localTheme ?? reduxTheme}`}>
+    <div className={`container dark`}>
       <Home />
     </div>
   );

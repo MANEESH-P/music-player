@@ -55,7 +55,6 @@ const useGetSongDetails = (song) => {
     if (song) {
       musicMetadata.parseBlob(song).then(metadata => {
         const { common } = metadata;
-        console.log(metadata);
         const cover = musicMetadata.selectCover(common.picture);
         const url = getThumbnailUrl(cover);
         const { artist } = common
